@@ -9,7 +9,7 @@
 # - https://github.com/mathiasbynens/dotfiles.git
 # - https://github.com/cowboy/dotfiles.git
 #
-# Licensed under the MIT license.
+# Distributed under the MIT license.
 ###########################################
 
 printf "\n
@@ -37,29 +37,29 @@ function dotSetup() {
     do
         if [[ $ARG == "brew" ]] || [[ $ARG == "all" ]]; then
             echo "Installing Homebrew along with some common formulae and apps."
-            ./brew.sh
+            ./scripts/brew.sh
         fi
         if [[ $ARG == "macOS" ]] || [[ $ARG == "all" ]]; then
             echo "Updating macOS and installing Xcode command line tools"
             ./osxprep.sh
             echo "Setting sensible macOS defaults."
-            ./osx.sh
+            ./scripts/osx.sh
         fi
         if [[ $ARG == "pydata" ]] || [[ $ARG == "all" ]]; then
             echo "Setting up Python data development environment."
-            ./pydata.sh
+            ./scripts/pydata.sh
         fi
         if [[ $ARG == "aws" ]] || [[ $ARG == "all" ]]; then
             echo "Setting up AWS development environment."
-            ./aws.sh
+            ./scripts/aws.sh
         fi
         if [[ $ARG == "datastores" ]] || [[ $ARG == "all" ]]; then
             echo "Setting up data stores."
-            ./datastores.sh
+            ./scripts/datastores.sh
         fi
         if [[ $ARG == "web" ]] || [[ $ARG == "all" ]]; then
             echo "Setting up JavaScript web development environment."
-            ./web.sh
+            ./scripts/web.sh
         fi
     done
 	shopt -u nocasematch # Restore bash to default case matching.
