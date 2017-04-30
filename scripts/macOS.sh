@@ -6,8 +6,6 @@
 # Adapted from 
 # - https://github.com/mathiasbynens/dotfiles.git (.macos)
 # - https://github.com/donnemartin/dev-setup.git (osxprep.sh, osx.sh)
-# With inspiration from
-# - https://github.com/cowboy/dotfiles.git
 #
 # Distributed under the MIT license.
 #####################################################################
