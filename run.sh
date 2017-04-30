@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-###########################################
-# CREDITS & LICENSE #######################
-###########################################
+#####################################################################
+# CREDITS & LICENSE #################################################
+#####################################################################
 # Adapted from 
 # - https://github.com/donnemartin/dev-setup.git (.dots)
 # With inspiration from
@@ -10,7 +10,7 @@
 # - https://github.com/cowboy/dotfiles.git
 #
 # Distributed under the MIT license.
-###########################################
+#####################################################################
 
 printf "\n
 troncali/.setup
@@ -25,6 +25,17 @@ if [ -z "$@" ]; then
 	set -- $REPLY
 fi
 
+# Resolve the source directory from which this script is running.
+# Credit: http://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+	DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+	SOURCE="$(readlink "$SOURCE")"
+	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+cd $DIR #set DIR as the current working directory
+
 # Define dotSetup() to execute scripts based on setup scope.
 function dotSetup() {
     # Gain administrative access; update 'sudo' timestamp until script terminates to prevent multiple prompts.
@@ -36,35 +47,33 @@ function dotSetup() {
     for ARG in "$@"
     do
         if [[ $ARG == "brew" ]] || [[ $ARG == "all" ]]; then
-            echo "Installing Homebrew along with some common formulae and apps."
+            # Install Homebrew along with some common formulae and apps.
             ./scripts/brew.sh
         fi
         if [[ $ARG == "macOS" ]] || [[ $ARG == "all" ]]; then
-            echo "Updating macOS and installing Xcode command line tools"
-            ./osxprep.sh
-            echo "Setting sensible macOS defaults."
-            ./scripts/osx.sh
+            # Set sensible macOS defaults.
+            ./scripts/macOS.sh
         fi
         if [[ $ARG == "pydata" ]] || [[ $ARG == "all" ]]; then
-            echo "Setting up Python data development environment."
+            # Set up Python data development environment.
             ./scripts/pydata.sh
         fi
         if [[ $ARG == "aws" ]] || [[ $ARG == "all" ]]; then
-            echo "Setting up AWS development environment."
+            # Set up AWS development environment.
             ./scripts/aws.sh
         fi
         if [[ $ARG == "datastores" ]] || [[ $ARG == "all" ]]; then
-            echo "Setting up data stores."
+            # Set up data stores.
             ./scripts/datastores.sh
         fi
         if [[ $ARG == "web" ]] || [[ $ARG == "all" ]]; then
-            echo "Setting up JavaScript web development environment."
+            # Set up JavaScript web development environment.
             ./scripts/web.sh
         fi
     done
 	shopt -u nocasematch # Restore bash to default case matching.
 
-    printf "\n\ntroncali/.setup Complete.\n===================================================\nPlease restart your computer.\n\n"
+    printf "\n\ntroncali/.setup : Complete.\n===================================================\nPlease restart your computer.\n\n"
 }
 
 # Confirm that files will be overwritten in user's home directory before starting setup.
