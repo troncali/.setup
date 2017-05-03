@@ -87,13 +87,7 @@ echo "    -> CLI for macOS 'Dark Mode'."
 # Install Miscellaneous Binaries                                              #
 ###############################################################################
 
-## TODO: Describe applications being installed;
-##		 Search for other applications to include ('brew cask search')
-
-#brew cask install xquartz
-#brew cask install java
-#brew cask install google-chrome
-#brew cask install dropbox
+## TODO: Identify binaries from adapted files.
 
 ###############################################################################
 # Clean Up                                                                    #
