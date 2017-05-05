@@ -22,3 +22,15 @@ else
 	#brew update
 	#brew upgrade
 fi
+
+# Install databases
+echo "    -> MySQL."
+#brew install mysql
+echo "    -> PostgreSQL."
+#brew install postgresql
+
+# Instal MySQL Workbench
+#brew cask install mysqlworkbench
+
+# Clean Up
+#brew cleanup
