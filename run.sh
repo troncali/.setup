@@ -54,7 +54,7 @@ function dotSetup() {
             # Set macOS and application preferences.
             ./scripts/macOS.sh
         fi
-        if [[ $ARG == "pydata" ]] || [[ $ARG == "all" ]]; then
+        if [[ $ARG == "python" ]] || [[ $ARG == "all" ]]; then
             # Set up Python data development environment.
             ./scripts/pydata.sh
         fi
@@ -62,12 +62,12 @@ function dotSetup() {
             # Set up AWS development environment.
             ./scripts/aws.sh
         fi
-        if [[ $ARG == "datastores" ]] || [[ $ARG == "all" ]]; then
-            # Set up data stores.
-            ./scripts/datastores.sh
+        if [[ $ARG == "data" ]] || [[ $ARG == "all" ]]; then
+            # Configure databases and related tools.
+            ./scripts/data.sh
         fi
         if [[ $ARG == "web" ]] || [[ $ARG == "all" ]]; then
-            # Set up JavaScript web development environment.
+            # Configure JavaScript web development environment.
             ./scripts/web.sh
         fi
     done
