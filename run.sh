@@ -36,7 +36,7 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd $DIR #set DIR as the current working directory
 
-# Define dotSetup() to execute scripts based on setup scope.
+# Define dotSetup() to execute scripts based on user-specified scope.
 function dotSetup() {
     # Gain administrative access; update 'sudo' timestamp until script terminates to prevent multiple prompts.
     sudo -v
@@ -47,11 +47,11 @@ function dotSetup() {
     for ARG in "$@"
     do
         if [[ $ARG == "brew" ]] || [[ $ARG == "all" ]]; then
-            # Install Homebrew along with some common formulae and apps.
+            # Install Homebrew along with common formulae and apps.
             ./scripts/brew.sh
         fi
         if [[ $ARG == "macOS" ]] || [[ $ARG == "all" ]]; then
-            # Set sensible macOS defaults.
+            # Set macOS and application preferences.
             ./scripts/macOS.sh
         fi
         if [[ $ARG == "pydata" ]] || [[ $ARG == "all" ]]; then
