@@ -56,7 +56,7 @@ function dotSetup() {
         fi
         if [[ $ARG == "python" ]] || [[ $ARG == "all" ]]; then
             # Set up Python data development environment.
-            ./scripts/pydata.sh
+            ./scripts/python.sh
         fi
         if [[ $ARG == "aws" ]] || [[ $ARG == "all" ]]; then
             # Set up AWS development environment.
