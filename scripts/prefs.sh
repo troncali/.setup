@@ -598,8 +598,11 @@ EOD
 # Disable the annoying line marks
 #defaults write com.apple.Terminal ShowLineMarks -int 0
 
-# Install and configure Oh-My-Zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+###############################################################################
+# Oh My Zsh                                                                   #
+###############################################################################
+
+
 
 ###############################################################################
 # iTerm 2                                                                     #
