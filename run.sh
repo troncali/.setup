@@ -46,6 +46,10 @@ function dotSetup() {
 	shopt -s nocasematch # Ignore letter case for scope matching.
     for ARG in "$@"
     do
+        if [[ $ARG == "init" ]] || [[ $ARG == "all" ]]; then
+            # Install Homebrew along with common formulae and apps.
+            ./scripts/init.sh
+        fi
         if [[ $ARG == "brew" ]] || [[ $ARG == "all" ]]; then
             # Install Homebrew along with common formulae and apps.
             ./scripts/brew.sh

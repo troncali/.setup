@@ -18,9 +18,9 @@ Configuring macOS with sensible defaults.\n"
 echo "    -> Installing Xcode Command Line Tools."
 #xcode-select --install
 
-# Install Oh-My-Zsh
+# Install Oh My Zsh.
 echo "    -> Installing Oh My Zsh."
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Implement system and application preferences.
 echo "    -> Configuring system and application preferences."
