@@ -21,7 +21,7 @@ Distributed under the MIT License.\n"
 # If the scope of the intended setup is not specified, ask for it.
 if [ -z "$@" ]; then
 	printf "\n\n"
-	read -p "Please specify the scope of your desired setup (all, brew, macOS, pydata, aws, datastores, web): "
+	read -p "Please specify the scope of your desired setup (all, init, brew, macOS, pydata, aws, datastores, web): "
 	set -- $REPLY
 fi
 
