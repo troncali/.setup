@@ -98,8 +98,8 @@ function do_stuff() {
 
 # Process files in "copy" directory.
 echo "    -> Copy user files to ~/."
-do_stuff copy
+#do_stuff copy
 
 # Process files in "link" directory.
 echo "    -> Link user files to ~/."
-do_stuff link
+#do_stuff link
