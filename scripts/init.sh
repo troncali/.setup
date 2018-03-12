@@ -15,13 +15,17 @@ Copying and linking user files.\n"
 
 # Copy functions: test if file exists, copy.
 function copy_test() {
+
+	# Does an existing directory match the directory to be copied?
+	if [[ -d "$2" && ! "$(diff --brief -r "$1" "$2")" ]]; then
+		echo "same directory"
 	
 	# Does an existing file match the file to be copied?
-	if [[ -e "$2" && "$(cmp -s "$1" "$2")" == 0 ]]; then
-		echo "same file"
+	elif [[ -f "$2" && ! "$(cmp "$1" "$2" 2> /dev/null)" ]]; then
+		echo "same file"	
 	
 	# If an existing file doesn't match, is it newer?
-	#elif [[ "$1" -ot "$2" ]]; then
+	#elif [[ -f "$2" && "$1" -ot "$2" ]]; then
 		#echo "destination file newer"
 	fi
 }
