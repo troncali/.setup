@@ -13,7 +13,11 @@ printf "\ntroncali/.setup : init
 ===================================================
 Copying and linking user files.\n"
 
-# Copy functions: test if file exists, copy.
+###############################################################################
+# Copy Functions                                                              #
+###############################################################################
+
+# Test the file or directory to be copied.
 function copy_test() {
 
 	# Does an existing directory match the directory to be copied?
@@ -29,11 +33,19 @@ function copy_test() {
 		#echo "destination file newer"
 	fi
 }
+
+# Copy the file or directory.
 function copy_do() {
   cp -r "$2" ~/
 }
 
-# Link functions: test if link exists, link.
+###############################################################################
+# Link Functions                                                              #
+###############################################################################
+
+# TODO: What about linking directories?
+
+# Test the file to be linked.
 function link_test() {
 		
 	# Resolve absolute path of file to be linked.
@@ -51,15 +63,20 @@ function link_test() {
 		echo "same file" 
 	fi
 }
+
+# Link the file.
 function link_do() {  
 	ln -sf ${2#$HOME/} ~/
 }
+
+###############################################################################
+# Copy and Link Files                                                         #
+###############################################################################
 
 # Cycle through files to be copied and linked.
 function do_stuff() {
 	local base dest skip backup_dir
 	local files=($1/*)
-    #[[ $(declare -f "$1_files") ]] && files=($($1_files "${files[@]}"))
 	
 	# If there are no files, print a message and stop.
 	if [ "${files[0]}" == "$1/*" ]; then 
@@ -98,8 +115,8 @@ function do_stuff() {
 
 # Process files in "copy" directory.
 echo "    -> Copy user files to ~/."
-#do_stuff copy
+do_stuff copy
 
 # Process files in "link" directory.
 echo "    -> Link user files to ~/."
-#do_stuff link
+do_stuff link
