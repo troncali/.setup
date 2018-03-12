@@ -81,7 +81,7 @@ function dotSetup() {
 }
 
 # Confirm that files will be overwritten in user's home directory before starting setup.
-printf "\n\nThis script will overwrite existing files in your home directory, including:\n.vimrc\n\n"
+printf "\n\nThis script will overwrite existing files in your home directory.  Only existing files replaced by those in the 'copy' and 'link' directories (.vimrc, .zshrc, etc.) will be backed up into the root of this repository.\n\n"
 read -p "Continue? (y/n) " -n 1;
 printf "\n\n"
 
