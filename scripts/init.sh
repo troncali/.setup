@@ -26,37 +26,36 @@ function copy_test() {
 	fi
 }
 function copy_do() {
-  cp "$2" ~/
+  cp -r "$2" ~/
 }
 
 # Link functions: test if link exists, link.
 function link_test() {
-	
-	# TODO: fix this because not finding that link exists.
-	
+		
+	# Resolve absolute path of file to be linked.
+	# SOURCE: https://stackoverflow.com/questions/7665/how-to-resolve-symbolic-links-in-a-shell-script/42918#42918
 	local link_file=$(perl -MCwd -le 'print Cwd::abs_path(shift)' "$1")
-	local dest_file=$(perl -MCwd -le 'print Cwd::abs_path(shift)' "$2")
 	
-	echo $link_file
-	echo $1
-	echo $dest_file
-	echo $2 
+	# Resolve absolute path for destination file.
+	# SOURCE: See above.
+	local dest_file=$2
+	while [ -L "${dest_file}" ]; do dest_file=$(readlink `[[ $OSTYPE != darwin* ]] && echo "-f"` "${dest_file}"); done
 	
-#	stat -f '%d:%i' "$link_file" 
-#	stat -f '%d:%i' "$dest_file"
-	
-	#if [[ "$(stat -f '%d:%i' "$link_file")" == "$(stat -f '%d:%i' "$dest_file")" ]]; then 
-	#	echo "same file" 
-	#fi
+	# If the destination file exists, test whether it matches the file to be linked.
+	# SOURCE: https://superuser.com/questions/196572/check-if-two-paths-are-pointing-to-the-same-file
+	if [[ -e "$dest_file" && "$(stat -f '%d:%i' "$link_file")" == "$(stat -f '%d:%i' "$dest_file")" ]]; then 
+		echo "same file" 
+	fi
 }
-function link_do() {
-  ln -sf ${2#$HOME/} ~/
+function link_do() {  
+	ln -sf ${2#$HOME/} ~/
 }
 
 # Cycle through files to be copied and linked.
 function do_stuff() {
 	local base dest skip backup_dir
 	local files=($1/*)
+    #[[ $(declare -f "$1_files") ]] && files=($($1_files "${files[@]}"))
 	
 	# If there are no files, print a message and stop.
 	if [ "${files[0]}" == "$1/*" ]; then 
@@ -78,8 +77,7 @@ function do_stuff() {
 		fi
 			
 		# Back up existing file in ~/.
-		# TODO: backup link file.
-		if [[ -e "$dest" ]]; then
+		if [[ -e "$dest" || -L "$dest" ]]; then
 			echo "       :: Backing up ~/$base."
 			
 			# Create backup dir if it doesn't already exist.
@@ -90,7 +88,7 @@ function do_stuff() {
 		fi
 			
 		# Do stuff.
-		"$1_do" "$base" "$file"
+		"$1_do" "$base" "$file" 
 	done
 }
 
