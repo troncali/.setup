@@ -20,10 +20,10 @@ printf "\ntroncali/.setup : Homebrew
 
 # Is Homebrew installed?
 if test ! $(which brew); then
-	printf "Installing Homebrew and commonly used formulae and applications.\n"
+	printf "    -> Installing Homebrew and commonly used formulae and applications.\n"
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
 else
-	printf "Updating Homebrew and commonly used formulae and applications.\n"
+	printf "    -> Updating Homebrew and commonly used formulae and applications.\n"
 	brew update > /dev/null
 	brew upgrade > /dev/null
 fi
@@ -46,7 +46,7 @@ function brew_it() {
 	###
 	###		  When using tabs, a space character should still be placed where
 	###		  each "_" appears below:
-	###		  ARRAY=( "name_	options :_	description" )
+	###		  ARRAY=( "name_	options	 :_description" )
 	for formula in "${pantry[@]}" ; do
 	    key=${formula%%:*}
 	    name=${key%% *}
@@ -133,8 +133,7 @@ MAC_APPS=(	"1password 			: 1Password"
 			"dash 				: Dash"
 			"dropbox 			: Dropbox"
 			"fontforge 			: FontForge"
-			"google-chrome 		: Google Chrome & DevTools"
-			"chrome-devtools 	: "
+			"google-chrome 		: Google Chrome"
 			"inkscape 			: Inkscape"
 			"java 				: Java"
 #			"microsoft-office 	: Microsoft Office"
@@ -159,74 +158,69 @@ echo "       :: Real VNC 5.3.2."
 
 echo "    -> Install other useful CLI tools."
 
-CLI_TOOLS=(	"ack 						: "
-			"imagemagick --with-webp	: " # Bitmap image manipulation tool.
-			"pv 						: " # Tool to monitor the progress of data through a pipeline.
-			"rename 					: " # Tool to rename files according to modification rules.
-			"speedtest_cli 				: " # CLI for testing internet bandwith using speedtest.net.
-			"tree 						: " # Recursive directory listing command with indented listing.
-			"dark-mode 					: " # CLI for macOS 'Dark Mode'.
-			
-			## TODO: convert these into the array format.
-			#brew install exiv2 		# Utility to manage image metadata.
-			#brew install lua 			# Lua programming language.
-			#brew install lynx 			# Web browser for Unix and VMS platforms.
-			#brew install p7zip 		# Command line version of 7-Zip.
-			#brew install pigz 			# Parallel implementation of gzip.
-			#brew install rhino 		# Open-source implementation of JavaScript written in Java.
-			#brew install ssh-copy-id 	# Add a public key to a remote machine's authorized_keys file
-			#brew install testssl 		# TLS/SSL security testing.
-			#brew install vbindiff 		# Displays files in hexadecimal and ASCII, highlighting differences.
-			#brew install webkit2png 	# Create screenshots of webpages from the terminal.
-			#brew install zopfli 		# Zopfli compression algorithm
-			#brew install libxml2		# XML C parser and toolkit.
-			#brew install libxslt		# XSLT C library.
-			#brew link libxml2 --force
-			#brew link libxslt --force
-			#brew install pkg-config 	# Tool to help insert compiler options.
-			#brew install libffi		# Foreign Function Interface Library.
-			#brew install pandoc		# Tool to convert one markup format to another.
-			#brew install homebrew/php/php56 --with-gmp	# PHP 5.6
+CLI_TOOLS=(	"ack 							: "
+			"imagemagick --with-webp		: " # Bitmap image manipulation tool.
+			"pv 							: " # Tool to monitor the progress of data through a pipeline.
+			"rename 						: " # Tool to rename files according to modification rules.
+			"speedtest_cli 					: " # CLI for testing internet bandwith using speedtest.net.
+			"tree 							: " # Recursive directory listing command with indented listing.
+			"dark-mode 						: " # CLI for macOS 'Dark Mode'.
+#			"exiv2 							: " # Utility to manage image metadata.
+#			"lua 							: "	# Lua programming language.
+#			"lynx 							: "	# Web browser for Unix and VMS platforms.
+#			"p7zip 							: "	# Command line version of 7-Zip.
+#			"pigz 							: "	# Parallel implementation of gzip.
+#			"rhino 							: "	# Open-source implementation of JavaScript written in Java.
+#			"ssh-copy-id 					: "	# Add a public key to a remote machine's authorized_keys file
+#			"testssl 						: " # TLS/SSL security testing.
+#			"vbindiff 						: " # Displays files in hexadecimal and ASCII, highlighting differences.
+#			"webkit2png 					: " # Create screenshots of webpages from the terminal.
+#			"zopfli 						: " # Zopfli compression algorithm
+#			"libxml2 						: " # XML C parser and toolkit.
+#			"libxslt 						: " # XSLT C library.
+#			"libxml2 --force 				: "
+#			"libxslt --force 				: "
+#			"pkg-config 					: " # Tool to help insert compiler options.
+#			"libffi 						: " # Foreign Function Interface Library.
+#			"pandoc 						: " # Tool to convert one markup format to another.
 )
 	
 #brew tap bramstein/webfonttools
-WEB_FONT_TOOLS=(	""
-					## TODO: convert these into the array format.
-#					#brew install sfnt2woff
-#					#brew install sfnt2woff-zopfli
-#					#brew install woff2
+WEB_FONTS=(	""
+#			"sfnt2woff 			: "
+#			"sfnt2woff-zopfli 	: "
+#			"woff2 				: "
 )
 	
 # Capture-the-Flag Tools: see https://github.com/ctfs/write-ups.
 CTF_TOOLS=(	""
-			## TODO: convert these into the array format.
-			#brew install aircrack-ng	# Suite of tools to assess WiFi network security.
-			#brew install binutils
-			#brew install binwalk		# Tool to analyze and extract firmware images.
-			#brew install cifer			# Tool to automate classical cipher cracking in C.
-			#brew install dex2jar		# Tools to work with android .dex and java .class files.
-			#brew install dns2tcp		# Tools to encapsulate TCP session in DNS packets.
-			#brew install fcrackzip		# Tool to crack zip passwords.
-			#brew install foremost		# Tool to recover files based on headers, footers, and data structures.
-			#brew install hashpump		# Tool to exploit the hash length extension attack.
-			#brew install hydra			# Network logon cracker.
-			#brew install john			# John the Ripper password cracker.
-			#brew install knock			# Port-knock client.
-			#brew install netpbm		# Toolkit for manipulation of graphic images.
-			#brew install nmap			# Network Mapper, utility for network discovery and security auditing.
-			#brew install pngcheck		# PNG image integrity verification and statistics.
-			#brew install socat			# Bidirectional data transfer between independent data channels.
-			#brew install sqlmap		# Penetration testing tool to automate process of detecting adn exploiting SQL injection flaws.
-			#brew install tcpflow		# TCIP/IP packet demultiplexer.
-			#brew install tcpreplay		# Tools for editing and replaying captured network traffic.
-			#brew install tcptrace		# Tool for analysis of TCP dump files.
-			#brew install ucspi-tcp		# `tcpserver` etc.
-			#brew install xpdf			# PDF viewer and toolkit.
-			#brew install xz			# Data compression software.
+#			"aircrack-ng 	: " # Suite of tools to assess WiFi network security.
+#			"binutils 		: "
+#			"binwalk 		: " # Tool to analyze and extract firmware images.
+#			"cifer 			: " # Tool to automate classical cipher cracking in C.
+#			"dex2jar 		: " # Tools to work with android .dex and java .class files.
+#			"dns2tcp 		: " # Tools to encapsulate TCP session in DNS packets.
+#			"fcrackzip 		: " # Tool to crack zip passwords.
+#			"foremost 		: " # Tool to recover files based on headers, footers, and data structures.
+#			"hashpump 		: " # Tool to exploit the hash length extension attack.
+#			"hydra 			: " # Network logon cracker.
+#			"john 			: " # John the Ripper password cracker.
+#			"knock 			: " # Port-knock client.
+#			"netpbm 		: " # Toolkit for manipulation of graphic images.
+#			"nmap 			: " # Network Mapper, utility for network discovery and security auditing.
+#			"pngcheck 		: " # PNG image integrity verification and statistics.
+#			"socat 			: " # Bidirectional data transfer between independent data channels.
+#			"sqlmap 		: " # Penetration testing tool to automate process of detecting adn exploiting SQL injection flaws.
+#			"tcpflow 		: " # TCIP/IP packet demultiplexer.
+#			"tcpreplay 		: " # Tools for editing and replaying captured network traffic.
+#			"tcptrace 		: " # Tool for analysis of TCP dump files.
+#			"ucspi""-tcp 	: " # `tcpserver` etc.
+#			"xpdf 			: " # PDF viewer and toolkit.
+#			"xz 			: " # Data compression software.
 )
 
 brew_it "install" CLI_TOOLS[@]
-#brew_it "install" WEB_FONT_TOOLS[@]
+#brew_it "install" WEB_FONTS[@]
 #brew_it "install" CTF_TOOLS[@]
 
 ###############################################################################
@@ -234,5 +228,4 @@ brew_it "install" CLI_TOOLS[@]
 ###############################################################################
 
 echo "    -> Clean up."
-
 brew cleanup
