@@ -56,13 +56,13 @@ function brew_it() {
 # Data Stores & Applications                                                  #
 ###############################################################################
 
-DATABASES=(	"mysql 				: MySQL"
-			"postgresql 		: PostgresSQL"
+DATABASES=(	"mysql      : MySQL"
+			"postgresql : PostgresSQL"
 )
 	
-DATA_APPS=(	"sequel-pro 		: Sequel Pro"
-#			"mysqlworkbench 	: MySQL Workbench"
-			"valentina-studio 	: Valentina Studio"
+DATA_APPS=(	"sequel-pro       : Sequel Pro"
+#           "mysqlworkbench   : MySQL Workbench"
+            "valentina-studio : Valentina Studio"
 )
 	
 echo "    -> Install database systems."	

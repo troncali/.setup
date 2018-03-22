@@ -56,10 +56,10 @@ function brew_it() {
 # Web Tools and Applications                                                  #
 ###############################################################################
 
-WEB_APPS=(	"node 							: Node"
-#			"homebrew/php/php56 --with-gmp 	: PHP 5.6"
-#			"heroku-toolbelt 				: Heroku Toolbelt"
-			"chrome-devtools 				: Google DevTools"
+WEB_APPS=( "node                          : Node"
+#          "homebrew/php/php56 --with-gmp : PHP 5.6"
+#          "heroku-toolbelt               : Heroku Toolbelt"
+           "chrome-devtools               : Google DevTools"
 )
 	
 echo "    -> Install useful web development tools."	
@@ -92,7 +92,7 @@ function npm_it() {
 }
 
 # TODO: Add other node packages.
-NPM_PKGS=(	"grunt-cli : Grunt"
+NPM_PKGS=( "grunt-cli : Grunt"
 )
 
 echo "    -> Install node packages."	
