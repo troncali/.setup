@@ -20,52 +20,50 @@ printf "\ntroncali/.setup : Homebrew
 
 # Is Homebrew installed?
 if test ! $(which brew); then
-	printf "    -> Installing Homebrew and commonly used formulae and applications.\n"
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
+    printf "    -> Installing Homebrew and commonly used formulae and applications.\n"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
 else
-	printf "    -> Updating Homebrew and commonly used formulae and applications.\n"
-	brew update > /dev/null
-	brew upgrade > /dev/null
+    printf "    -> Updating Homebrew and commonly used formulae and applications.\n"
+    brew update > /dev/null
+    brew upgrade > /dev/null
 fi
 
 # Process each installation array.
 function brew_it() {
-	local commands=${1}
-	local pantry=("${!2}")
-	local options=${3}
+    local commands=${1}
+    local pantry=("${!2}")
+    local options=${3}
 	
-	# If there are no formulae, stop.
-	if [ "${pantry[0]}" == "" ]; then 
-		return
-	fi
+    # If there are no formulae, stop.
+    if [ "${pantry[0]}" == "" ]; then 
+        return
+    fi
 		
-	# Parse the array of formulae.
-	### NOTE: Space characters (" ") are important in the array format. Always
-	###		  use a space character after 'name' and before 'description'.
-	###		  ARRAY=( "name options : description" )
-	###
-	###		  When using tabs, a space character should still be placed where
-	###		  each "_" appears below:
-	###		  ARRAY=( "name_	options	 :_description" )
-	for formula in "${pantry[@]}" ; do
-	    key=${formula%%:*}
-	    name=${key%% *}
-	    description=${formula#*: }
-		options=${key#* }
+    # Parse the array of formulae.
+    ### NOTE: Space characters (" ") are important in the array format. Always
+    ### use a space character after 'name' and before 'description':
+    ###	ARRAY=( "name options : description" )
+    ###	When using tabs, a space character should still be placed where
+    ###	each "_" appears: ARRAY=( "name_	options	 :_description" )
+    for formula in "${pantry[@]}" ; do
+        key=${formula%%:*}
+        name=${key%% *}
+        description=${formula#*: }
+        options=${key#* }
 	    
-		# Skip formula if installed.
-		if [[ $(brew `[[ $commands == cask* ]] && echo "cask"` ls --versions "$name" 2> /dev/null) ]]; then
-			continue
+        # Skip formula if installed.
+        if [[ $(brew `[[ $commands == cask* ]] && echo "cask"` ls --versions "$name" 2> /dev/null) ]]; then
+            continue
 						
-		# Otherwise, install the formula.
-		else
+        # Otherwise, install the formula.
+        else
 			
-			# If no description after ":" in array, print nothing.
-			[[ ! -z "$description" ]] && echo "       :: $description."
+            # If no description after ":" in array, print nothing.
+            [[ ! -z "$description" ]] && echo "       :: $description."
 			
-			#brew $commands $name $options > /dev/null
-		fi		
-	done
+            #brew $commands $name $options > /dev/null
+        fi		
+    done
 }
 
 ###############################################################################
@@ -91,16 +89,16 @@ GNU_TOOLS=( "coreutils : GNU core and related utilities"
 )		
 
 MAC_TOOLS=( "zsh                           : Zsh"
-			"vim --with-override-system-vi : Vim"
-			"openssh                       : OpenSSH" 
+            "vim --with-override-system-vi : Vim"
+            "openssh                       : OpenSSH" 
 )
 	
-GIT_TOOLS=(	"git        : Git and related tools"
+GIT_TOOLS=( "git        : Git and related tools"
             "git-flow   : " # High-level repository operations for Vincent Driessen's branching model.
-            "git-lfs    : "	# Git extention for versioning large files.
-            "bfg        : "	# Simpler, faster (but less sophisticated) alternative to git-filter-branch.
-#           "git-extras : " 
-#           "hub        : "	# Command line wrapper for git.
+            "git-lfs    : " # Git extention for versioning large files.
+            "bfg        : " # Simpler, faster (but less sophisticated) alternative to git-filter-branch.
+#           "git-extras : "
+#           "hub        : " # Command line wrapper for git.
 )
 
 QL_PLUGS=( "qlcolorcode        : Quick Look plugins"
@@ -185,14 +183,14 @@ CLI_TOOLS=( "ack                     : "
 )
 	
 #brew tap bramstein/webfonttools
-WEB_FONTS=(	""
+WEB_FONTS=( ""
 #           "sfnt2woff        : "
 #           "sfnt2woff-zopfli : "
 #           "woff2            : "
 )
 	
 # Capture-the-Flag Tools: see https://github.com/ctfs/write-ups.
-CTF_TOOLS=(	""
+CTF_TOOLS=( ""
 #			"aircrack-ng : " # Suite of tools to assess WiFi network security.
 #			"binutils    : "
 #			"binwalk     : " # Tool to analyze and extract firmware images.

@@ -20,8 +20,8 @@ echo "    -> Installing Xcode Command Line Tools."
 
 # Add Zsh to the list of allowed shells and make it the active shell.
 if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then
-	echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells;
-	chsh -s /usr/local/bin/zsh;
+    echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells;
+    chsh -s /usr/local/bin/zsh;
 fi
 
 # Install Oh My Zsh.
