@@ -77,19 +77,23 @@ function link_do() {
 function do_stuff() {
 	local base dest skip backup_dir
 	local files=($1/*)
+	local dotfiles=($1/.[!.]*)
 	
-	# If there are no files, print a message and stop.
-	if [ "${files[0]}" == "$1/*" ]; then 
+	# If there are no files other than .DS_Store, print a message and stop.
+	if [[ "${files[@]}" == "$1/*" && ( "${dotfiles[@]}" == "$1/.[!.]*" || "${dotfiles[@]}" == "$1/.DS_Store" ) ]]; then 		
 		echo "       :: No files in $1 directory."; 
 		return
 	fi
 	
 	# Iterate over files.
-	for file in "${files[@]}"; do
+	for file in "${files[@]}" "${dotfiles[@]}"; do
 		base="$(basename $file)"
 		dest="$HOME/$base"
 		skip="$("$1_test" "$file" "$dest")"
 		backup_dir="backup/$(date "+%Y_%m_%d-%H_%M_%S")/"
+		
+		# If files is $1 directory or .DS_Store, skip.
+		[[ "$file" != "$1/*" && "$file" != "$1/.[!.]*" && "$file" != "$1/.DS_Store" ]] || continue
 		
 		# If _test function returns a string, skip file and print that message.
 		if [[ "$skip" ]]; then
