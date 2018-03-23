@@ -56,7 +56,7 @@ function dotSetup() {
         fi
         if [[ $ARG == "macOS" ]] || [[ $ARG == "all" ]]; then
             # Set macOS and application preferences.
-            ./scripts/macOS.sh
+            . ./scripts/macOS.sh # . command important to pass through $DIR.
         fi
         if [[ $ARG == "python" ]] || [[ $ARG == "all" ]]; then
             # Set up Python data development environment.

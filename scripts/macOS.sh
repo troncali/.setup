@@ -16,7 +16,7 @@ Configuring macOS with sensible defaults.\n"
 
 # Install XCode CLT.
 echo "    -> Installing Xcode Command Line Tools."
-#xcode-select --install
+xcode-select --install > /dev/null
 
 # Add Zsh to the list of allowed shells and make it the active shell.
 if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then
@@ -28,6 +28,30 @@ fi
 echo "    -> Installing Oh My Zsh."
 #sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# Build TigerVNC
+## TODO: TigerVNC Build: https://github.com/TigerVNC/tigervnc/blob/master/BUILDING.txt (w/ TLS, NLS)
+## TODO: TLS Tunnel
+
 # Implement system and application preferences.
 echo "    -> Configuring system and application preferences."
 #./scripts/prefs.sh
+
+###############################################################################
+# Set Up ~/Code                                                               #
+###############################################################################
+
+# Specify the home-level folder where you store all your projects.
+CODEDIR=~/Code
+
+# If the folder does not exist, create it.
+mkdir -p "$CODEDIR"
+
+# Give the folder a git icon to match appearance of other home-level folders.
+if [ ! -f "$CODEDIR"/Icon? ]; then
+	git clone git://github.com/lgarron/folderify.git "$CODEDIR"/folderify --quiet
+    cd "$CODEDIR"/folderify
+    python -m folderify ~/.setup-assets/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
+    rm -rf "$CODEDIR"/folderify
+fi
+
+cd $DIR # Change back to run.sh directory.
