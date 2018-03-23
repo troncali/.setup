@@ -16,7 +16,7 @@ Configuring macOS with sensible defaults.\n"
 
 # Install XCode CLT.
 echo "    -> Installing Xcode Command Line Tools."
-xcode-select --install > /dev/null
+xcode-select --install
 
 # Add Zsh to the list of allowed shells and make it the active shell.
 if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then
