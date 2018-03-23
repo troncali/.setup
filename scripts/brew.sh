@@ -6,6 +6,7 @@
 # Adapted from 
 # - https://github.com/mathiasbynens/dotfiles.git (brew.sh)
 # - https://github.com/donnemartin/dev-setup.git (brew.sh)
+# - https://github.com/jaywcjlove/awesome-mac
 #
 # Distributed under the MIT license.
 #####################################################################
@@ -40,11 +41,11 @@ function brew_it() {
     fi
 		
     # Parse the array of formulae.
-    ### NOTE: Space characters (" ") are important in the array format. Always
-    ### use a space character after 'name' and before 'description':
-    ###	ARRAY=( "name options : description" )
-    ###	When using tabs, a space character should still be placed where
-    ###	each "_" appears: ARRAY=( "name_	options	 :_description" )
+    #     NOTE: Space characters (" ") are important in the array format.
+    # Always use a space character after 'name' and before 'description':
+    # ARRAY=( "name options : description" )
+    # When using tabs, a space character should still be placed where
+    # each "_" appears: ARRAY=( "name_	options	 :_description" )
     for formula in "${pantry[@]}" ; do
         key=${formula%%:*}
         name=${key%% *}
@@ -82,6 +83,8 @@ GNU_TOOLS=( "coreutils : GNU core and related utilities"
             "moreutils : "
             "findutils : "
             "gnu-sed   : "
+			"gnutls    : "
+			"gettext   : "
             "grep      : "
             "wget      : "
             "screen    : "
@@ -120,8 +123,6 @@ brew_it "cask install" QL_PLUGS[@]
 # Install macOS Applications                                                  #
 ###############################################################################
 
-## TODO: Lastpass?  Libre/Open Office?  Other VNC Server / license?
-
 echo "    -> Install applications."
 
 MAC_APPS=( "1password        : 1Password"
@@ -129,24 +130,27 @@ MAC_APPS=( "1password        : 1Password"
            "cyberduck        : Cyberduck"
            "dash             : Dash"
            "dropbox          : Dropbox"
+		   "electron         : Electron"
            "fontforge        : FontForge"
            "google-chrome    : Google Chrome"
            "inkscape         : Inkscape"
            "java             : Java"
-#          "microsoft-office : Microsoft Office"
+           "microsoft-office : Microsoft Office"
+           "openoffice       : OpenOffice"
 #          "parallels        : Parallels"
            "sourcetree       : Sourcetree"
            "spark            : Spark"
 #          "sparkleshare     : SparkleShare"
            "spotify          : Spotify"
            "textmate         : TextMate"
+		   "virtualbox       : VirtualBox"
            "xquartz          : XQuartz"
 )
 
 brew_it "cask install" MAC_APPS[@]
 
 # Install Real VNC 5.3.2
-echo "       :: Real VNC 5.3.2."
+#echo "       :: Real VNC 5.3.2."
 #brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/326d6a92b0c06c9a78c347ded4e1fd7e3f7d78a5/Casks/real-vnc.rb
 
 ###############################################################################
@@ -162,6 +166,9 @@ CLI_TOOLS=( "ack                     : "
             "speedtest_cli           : " # CLI for testing internet bandwith using speedtest.net.
             "tree                    : " # Recursive directory listing command with indented listing.
             "dark-mode               : " # CLI for macOS 'Dark Mode'.
+			"zlib                    : " # Compression library; necessary for TigerVNC build.
+			"libjpeg-turbo           : " # Accelerated JPEG de/compression; necessary for TigerVNC build.
+			"fltk                    : " # GUI Toolkit; necessary for TigerVNC build.
 #           "exiv2                   : " # Utility to manage image metadata.
 #           "lua                     : " # Lua programming language.
 #           "lynx                    : " # Web browser for Unix and VMS platforms.
