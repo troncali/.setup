@@ -15,57 +15,8 @@ printf "\ntroncali/.setup : Homebrew
 ===================================================
 "
 
-###############################################################################
-# Brew Functions                                                              #
-###############################################################################
-
-# Is Homebrew installed?
-if test ! $(which brew); then
-    printf "    -> Installing Homebrew and commonly used formulae and applications.\n"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
-else
-    printf "    -> Updating Homebrew and commonly used formulae and applications.\n"
-    brew update > /dev/null
-    brew upgrade > /dev/null
-fi
-
-# Process each installation array.
-function brew_it() {
-    local commands=${1}
-    local pantry=("${!2}")
-    local options=${3}
-	
-    # If there are no formulae, stop.
-    if [ "${pantry[0]}" == "" ]; then 
-        return
-    fi
-		
-    # Parse the array of formulae.
-    #     NOTE: Space characters (" ") are important in the array format.
-    # Always use a space character after 'name' and before 'description':
-    # ARRAY=( "name options : description" )
-    # When using tabs, a space character should still be placed where
-    # each "_" appears: ARRAY=( "name_	options	 :_description" )
-    for formula in "${pantry[@]}" ; do
-        key=${formula%%:*}
-        name=${key%% *}
-        description=${formula#*: }
-        options=${key#* }
-	    
-        # Skip formula if installed.
-        if [[ $(brew `[[ $commands == cask* ]] && echo "cask"` ls --versions "$name" 2> /dev/null) ]]; then
-            continue
-						
-        # Otherwise, install the formula.
-        else
-			
-            # If no description after ":" in array, print nothing.
-            [[ ! -z "$description" ]] && echo "       :: $description."
-			
-            #brew $commands $name $options > /dev/null
-        fi		
-    done
-}
+# Make sure Homebrew is installed and updated.
+test_brew
 
 ###############################################################################
 # Update macOS Tools                                                          #

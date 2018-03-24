@@ -25,6 +25,65 @@ if [ -z "$@" ]; then
     set -- $REPLY
 fi
 
+###############################################################################
+# Brew Functions                                                              #
+###############################################################################
+
+# Is Homebrew installed?
+function test_brew() {
+    if test ! $(which brew); then
+        printf "    -> Installing Homebrew and commonly used formulae and applications.\n"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
+    else
+        printf "    -> Updating Homebrew and commonly used formulae and applications.\n"
+        brew update > /dev/null
+        brew upgrade > /dev/null
+    fi
+}
+
+# Process each installation array.
+function brew_it() {
+    local commands=${1}
+    local pantry=("${!2}")
+    local options=${3}
+	
+    # If there are no formulae, stop.
+    if [ "${pantry[0]}" == "" ]; then 
+        return
+    fi
+		
+    # Parse the array of formulae.
+    #     NOTE: Space characters (" ") are important in the array format.
+    # Always use a space character after 'name' and before 'description':
+    # ARRAY=( "name options : description" )
+    # When using tabs, a space character should still be placed where
+    # each "_" appears: ARRAY=( "name_	options	 :_description" )
+    for formula in "${pantry[@]}" ; do
+        key=${formula%%:*}
+        name=${key%% *}
+        description=${formula#*: }
+        options=${key#* }
+	    
+        # Skip formula if installed.
+        if [[ $(brew `[[ $commands == cask* ]] && echo "cask"` ls --versions "$name" 2> /dev/null) ]]; then
+            continue
+						
+        # Otherwise, install the formula.
+        else
+			
+            # If no description after ":" in array, print nothing.
+            [[ ! -z "$description" ]] && echo "       :: $description."
+			
+			## TODO: Enable brew when testing finished.
+            #brew $commands $name $options > /dev/null
+        fi		
+    done
+}
+
+###############################################################################
+# Scope Selection Functions                                                   #
+###############################################################################
+
 # Resolve the source directory from which this script is running.
 # Credit: http://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
 SOURCE="${BASH_SOURCE[0]}"
@@ -39,8 +98,8 @@ cd $DIR #set DIR as the current working directory
 # Define dotSetup() to execute scripts based on user-specified scope.
 function dotSetup() {
     # Gain administrative access; update 'sudo' timestamp until script terminates to prevent multiple prompts.
-    #sudo -v
-    #while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    sudo -v
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
     # Run each script within the specified scope.
     shopt -s nocasematch # Ignore letter case for scope matching.
@@ -52,27 +111,27 @@ function dotSetup() {
         fi
         if [[ $ARG == "brew" ]] || [[ $ARG == "all" ]]; then
             # Install Homebrew along with common formulae and apps.
-            ./scripts/brew.sh
+            . ./scripts/brew.sh # . command important to pass through $DIR and functions.
         fi
         if [[ $ARG == "macOS" ]] || [[ $ARG == "all" ]]; then
             # Set macOS and application preferences.
-            . ./scripts/macOS.sh # . command important to pass through $DIR.
+            . ./scripts/macOS.sh
         fi
         if [[ $ARG == "python" ]] || [[ $ARG == "all" ]]; then
             # Set up Python data development environment.
-            ./scripts/python.sh
+            . ./scripts/python.sh
         fi
         if [[ $ARG == "aws" ]] || [[ $ARG == "all" ]]; then
             # Set up AWS development environment.
-            ./scripts/aws.sh
+            . ./scripts/aws.sh
         fi
         if [[ $ARG == "data" ]] || [[ $ARG == "all" ]]; then
             # Configure databases and related tools.
-            ./scripts/data.sh
+            . ./scripts/data.sh
         fi
         if [[ $ARG == "web" ]] || [[ $ARG == "all" ]]; then
             # Configure JavaScript web development environment.
-            ./scripts/web.sh
+            . ./scripts/web.sh
         fi
         if [[ $ARG == "vnc" ]] || [[ $ARG == "all" ]]; then
             # Configure JavaScript web development environment.

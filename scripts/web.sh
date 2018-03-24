@@ -13,44 +13,8 @@ printf "\ntroncali/.setup : Web Tools
 ===================================================
 Configuring JavaScript development environment.\n"
 
-###############################################################################
-# Brew Functions                                                              #
-###############################################################################
-
-# Is Homebrew installed?
-if test ! $(which brew); then
-    printf "    -> Installing Homebrew and commonly used formulae and applications.\n"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
-else
-    printf "    -> Updating Homebrew and commonly used formulae and applications.\n"
-    brew update > /dev/null
-    brew upgrade > /dev/null
-fi
-
-# Process each installation array.  See 'brew.sh' for explanations.
-function brew_it() {
-    local commands=${1}
-    local pantry=("${!2}")
-    local options=${3}
-	
-    if [ "${pantry[0]}" == "" ]; then 
-        return
-    fi
-		
-    for formula in "${pantry[@]}" ; do
-        key=${formula%%:*}
-        name=${key%% *}
-        description=${formula#*: }
-        options=${key#* }
-
-        if [[ $(brew `[[ $commands == cask* ]] && echo "cask"` ls --versions "$name" 2> /dev/null) ]]; then
-            continue
-        else
-            [[ ! -z "$description" ]] && echo "       :: $description."
-            #brew $commands $name $options > /dev/null
-        fi		
-    done
-}
+# Make sure Homebrew is installed and updated.
+test_brew
 
 ###############################################################################
 # Web Tools and Applications                                                  #
