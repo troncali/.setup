@@ -20,18 +20,18 @@ Distributed under the MIT License.\n"
 
 # If the scope of the intended setup is not specified, ask for it.
 if [ -z "$@" ]; then
-	printf "\n\n"
-	read -p "Please specify the scope of your desired setup (all, init, brew, macOS, pydata, aws, datastores, web): "
-	set -- $REPLY
+    printf "\n\n"
+    read -p "Please specify the scope of your desired setup (all, init, brew, macOS, pydata, aws, datastores, web): "
+    set -- $REPLY
 fi
 
 # Resolve the source directory from which this script is running.
 # Credit: http://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-	DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-	SOURCE="$(readlink "$SOURCE")"
-	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd $DIR #set DIR as the current working directory
@@ -39,11 +39,11 @@ cd $DIR #set DIR as the current working directory
 # Define dotSetup() to execute scripts based on user-specified scope.
 function dotSetup() {
     # Gain administrative access; update 'sudo' timestamp until script terminates to prevent multiple prompts.
-    sudo -v
-    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    #sudo -v
+    #while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
     # Run each script within the specified scope.
-	shopt -s nocasematch # Ignore letter case for scope matching.
+    shopt -s nocasematch # Ignore letter case for scope matching.
     for ARG in "$@"
     do
         if [[ $ARG == "init" ]] || [[ $ARG == "all" ]]; then
@@ -75,7 +75,7 @@ function dotSetup() {
             ./scripts/web.sh
         fi
     done
-	shopt -u nocasematch # Restore bash to default case matching.
+    shopt -u nocasematch # Restore bash to default case matching.
 
     printf "\n\ntroncali/.setup : Complete.\n===================================================\nPlease restart your computer.\n\n"
 }
