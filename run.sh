@@ -74,6 +74,10 @@ function dotSetup() {
             # Configure JavaScript web development environment.
             ./scripts/web.sh
         fi
+        if [[ $ARG == "vnc" ]] || [[ $ARG == "all" ]]; then
+            # Configure JavaScript web development environment.
+            . ./scripts/vnc.sh
+        fi
     done
     shopt -u nocasematch # Restore bash to default case matching.
 
