@@ -18,6 +18,10 @@ Configuring macOS with sensible defaults.\n"
 echo "    -> Installing Xcode Command Line Tools."
 xcode-select --install
 
+###############################################################################
+# Install Oh My Zsh                                                           #
+###############################################################################
+
 # Add Zsh to the list of allowed shells and make it the active shell.
 if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then
     echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells;
@@ -28,9 +32,9 @@ fi
 echo "    -> Installing Oh My Zsh."
 #sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# Build TigerVNC
-## TODO: TigerVNC Build: https://github.com/TigerVNC/tigervnc/blob/master/BUILDING.txt (w/ TLS, NLS)
-## TODO: TLS Tunnel
+###############################################################################
+# Configure Preferences                                                       #
+###############################################################################
 
 # Implement system and application preferences.
 echo "    -> Configuring system and application preferences."
@@ -48,10 +52,10 @@ mkdir -p "$CODEDIR"
 
 # Give the folder a git icon to match appearance of other home-level folders.
 if [ ! -f "$CODEDIR"/Icon? ]; then
-	git clone git://github.com/lgarron/folderify.git "$CODEDIR"/folderify --quiet
-    cd "$CODEDIR"/folderify
-    python -m folderify ~/.setup-assets/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
-    rm -rf "$CODEDIR"/folderify
+	git clone git://github.com/lgarron/folderify.git "$ASSETS"/folderify --quiet
+    cd "$ASSETS"/folderify
+    python -m folderify "$ASSETS"/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
+    rm -rf "$ASSETS"/folderify
 fi
 
 cd $DIR # Change back to run.sh directory.
