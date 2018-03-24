@@ -491,6 +491,12 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 #defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
 
 ###############################################################################
+# Spark                                                                       #
+###############################################################################
+
+## TODO: Configure Spark.
+
+###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
 
@@ -550,6 +556,8 @@ sudo mdutil -E / > /dev/null
 # Only use UTF-8 in Terminal.app
 #defaults write com.apple.terminal StringEncodings -array 4
 
+## TODO: Change SMYCK file to soure from .setup-assets
+
 # Use a modified version of the SMYCK Color Scheme by default in Terminal.app
 # SMYCK Color Scheme Credit: https://github.com/hukl/Smyck-Color-Scheme
 # SMYCK Color Scheme distributed under the MIT license.
@@ -602,7 +610,7 @@ EOD
 # Oh My Zsh                                                                   #
 ###############################################################################
 
-
+## TODO: Configure Oh-My-ZSH.
 
 ###############################################################################
 # iTerm 2                                                                     #
@@ -628,6 +636,18 @@ EOD
 
 # Don’t display the annoying prompt when quitting iTerm
 #defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+###############################################################################
+# TigerVNC                                                                    #
+###############################################################################
+
+## TODO: Configure TigerVNC.
+
+###############################################################################
+# VirtualBox                                                                  #
+###############################################################################
+
+## TODO: Configure VirtualBox.
 
 ###############################################################################
 # Time Machine                                                                #
