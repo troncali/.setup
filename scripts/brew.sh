@@ -160,6 +160,7 @@ brew_it "cask install" MAC_APPS[@]
 echo "    -> Install other useful CLI tools."
 
 CLI_TOOLS=( "ack                     : "
+            "cmake                   : "
             "imagemagick --with-webp : " # Bitmap image manipulation tool.
             "pv                      : " # Tool to monitor the progress of data through a pipeline.
             "rename                  : " # Tool to rename files according to modification rules.
