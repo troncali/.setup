@@ -26,7 +26,7 @@ echo "    -> Install applications."
 
 MAC_APPS=( "1password        : 1Password"
            "1password-cli    : "
-		   "betterzip.       : BetterZip" # BetterZipQL plugin was integrated with the app.
+		   "betterzip        : BetterZip" # BetterZipQL plugin was integrated with the app.
            "cyberduck        : Cyberduck"
            "dash             : Dash"
            "dropbox          : Dropbox"
