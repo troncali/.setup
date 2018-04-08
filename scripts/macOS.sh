@@ -30,7 +30,7 @@ fi
 
 # Install Oh My Zsh.
 echo "    -> Installing Oh My Zsh."
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" > /dev/null
 
 ###############################################################################
 # Configure Preferences                                                       #

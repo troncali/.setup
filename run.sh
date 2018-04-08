@@ -79,7 +79,7 @@ function brew_it() {
 # If the scope of the intended setup is not specified, ask for it.
 if [ -z "$@" ]; then
     printf "\n\n"
-    read -p "Please specify the scope of your desired setup (all, init, brew, macOS, pydata, aws, datastores, web, vnc): "
+    read -p "Please specify the scope of your desired setup (all, init, brew, macOS, pydata, aws, datastores, web, vnc, zsh): "
     set -- $REPLY
 fi
 
@@ -133,8 +133,12 @@ function dotSetup() {
             . ./scripts/web.sh
         fi
         if [[ $ARG == "vnc" ]] || [[ $ARG == "all" ]]; then
-            # Configure JavaScript web development environment.
+            # Build TigerVNC and configure.
             . ./scripts/vnc.sh
+		fi
+        if [[ $ARG == "vnc" ]] || [[ $ARG == "all" ]]; then
+            # Configure JavaScript web development environment.
+            . ./scripts/zsh.sh
         fi
     done
     shopt -u nocasematch # Restore bash to default case matching.
