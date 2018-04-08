@@ -19,6 +19,41 @@ printf "\ntroncali/.setup : Homebrew
 test_brew
 
 ###############################################################################
+# Install macOS Applications                                                  #
+###############################################################################
+
+echo "    -> Install applications."
+
+MAC_APPS=( "1password        : 1Password"
+           "1password-cli    : "
+		   "betterzip.       : BetterZip" # BetterZipQL plugin was integrated with the app.
+           "cyberduck        : Cyberduck"
+           "dash             : Dash"
+           "dropbox          : Dropbox"
+		   "electron         : Electron"
+           "fontforge        : FontForge"
+           "google-chrome    : Google Chrome"
+           "inkscape         : Inkscape"
+           "java             : Java"
+           "microsoft-office : Microsoft Office"
+           "openoffice       : OpenOffice"
+#          "parallels        : Parallels"
+           "sourcetree       : Sourcetree"
+           "spark            : Spark"
+#          "sparkleshare     : SparkleShare"
+           "spotify          : Spotify"
+           "textmate         : TextMate"
+		   "virtualbox       : VirtualBox"
+           "xquartz          : XQuartz"
+)
+
+brew_it "cask install" MAC_APPS[@]
+
+# Install Real VNC 5.3.2
+#echo "       :: Real VNC 5.3.2."
+#brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/326d6a92b0c06c9a78c347ded4e1fd7e3f7d78a5/Casks/real-vnc.rb
+
+###############################################################################
 # Update macOS Tools                                                          #
 ###############################################################################
 
@@ -50,7 +85,7 @@ MAC_TOOLS=( "zsh                           : Zsh"
 GIT_TOOLS=( "git        : Git and related tools"
             "git-flow   : " # High-level repository operations for Vincent Driessen's branching model.
             "git-lfs    : " # Git extention for versioning large files.
-            "bfg        : " # Simpler, faster (but less sophisticated) alternative to git-filter-branch.
+            "bfg        : " # TODO: Cask install of Java required first (reorder).  Simpler, faster (but less sophisticated) alternative to git-filter-branch.
 #           "git-extras : "
 #           "hub        : " # Command line wrapper for git.
 )
@@ -60,7 +95,6 @@ QL_PLUGS=( "qlcolorcode        : Quick Look plugins"
            "qlmarkdown         : "
            "quicklook-json     : "
            "quicklook-csv      : "
-           "betterzipql        : "
            "qlimagesize        : "
            "suspicious-package : "
 )
@@ -69,40 +103,6 @@ brew_it "install" GNU_TOOLS[@]
 brew_it "install" MAC_TOOLS[@]
 brew_it "install" GIT_TOOLS[@]
 brew_it "cask install" QL_PLUGS[@]
-
-###############################################################################
-# Install macOS Applications                                                  #
-###############################################################################
-
-echo "    -> Install applications."
-
-MAC_APPS=( "1password        : 1Password"
-           "1password-cli    : "
-           "cyberduck        : Cyberduck"
-           "dash             : Dash"
-           "dropbox          : Dropbox"
-		   "electron         : Electron"
-           "fontforge        : FontForge"
-           "google-chrome    : Google Chrome"
-           "inkscape         : Inkscape"
-           "java             : Java"
-           "microsoft-office : Microsoft Office"
-           "openoffice       : OpenOffice"
-#          "parallels        : Parallels"
-           "sourcetree       : Sourcetree"
-           "spark            : Spark"
-#          "sparkleshare     : SparkleShare"
-           "spotify          : Spotify"
-           "textmate         : TextMate"
-		   "virtualbox       : VirtualBox"
-           "xquartz          : XQuartz"
-)
-
-brew_it "cask install" MAC_APPS[@]
-
-# Install Real VNC 5.3.2
-#echo "       :: Real VNC 5.3.2."
-#brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/326d6a92b0c06c9a78c347ded4e1fd7e3f7d78a5/Casks/real-vnc.rb
 
 ###############################################################################
 # Install Miscellaneous Binaries                                              #
