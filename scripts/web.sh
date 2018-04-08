@@ -49,7 +49,7 @@ function npm_it() {
             continue
         else
             [[ ! -z "$description" ]] && echo "       :: $description."
-            #npm install -g $name > /dev/null
+            npm install -g $name > /dev/null
         fi		
     done
 }

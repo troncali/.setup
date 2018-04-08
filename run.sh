@@ -67,8 +67,7 @@ function brew_it() {
             # If no description after ":" in array, print nothing.
             [[ ! -z "$description" ]] && echo "       :: $description."
 			
-			## TODO: Enable brew when testing finished.
-            #brew $commands $name $options > /dev/null
+            brew $commands $name $options > /dev/null
         fi		
     done
 }
