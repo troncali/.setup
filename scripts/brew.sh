@@ -85,7 +85,7 @@ MAC_TOOLS=( "zsh                           : Zsh"
 GIT_TOOLS=( "git        : Git and related tools"
             "git-flow   : " # High-level repository operations for Vincent Driessen's branching model.
             "git-lfs    : " # Git extention for versioning large files.
-            "bfg        : " # TODO: Cask install of Java required first (reorder).  Simpler, faster (but less sophisticated) alternative to git-filter-branch.
+            "bfg        : " # Simpler, faster (but less sophisticated) alternative to git-filter-branch.
 #           "git-extras : "
 #           "hub        : " # Command line wrapper for git.
 )
@@ -184,4 +184,4 @@ brew_it "install" CLI_TOOLS[@]
 ###############################################################################
 
 echo "    -> Clean up."
-brew cleanup
+brew cleanup > /dev/null
