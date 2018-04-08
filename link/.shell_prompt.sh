@@ -1,3 +1,5 @@
+## TODO: Add/revise from ~/.oh-my-zsh/oh-my-zsh.sh
+
 #
 # This shell prompt config file was created by promptline.vim
 #
