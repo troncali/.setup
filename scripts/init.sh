@@ -60,13 +60,13 @@ function link_test() {
 	# If the destination file exists, test whether it matches the file to be linked.
 	# SOURCE: https://superuser.com/questions/196572/check-if-two-paths-are-pointing-to-the-same-file
 	if [[ -e "$dest_file" && "$(stat -f '%d:%i' "$link_file")" == "$(stat -f '%d:%i' "$dest_file")" ]]; then 
-		echo "same file" 
-	fi
+		echo "same file"
+	fi 2> /dev/null
 }
 
 # Link the file.
 function link_do() {  
-	ln -sf ${2#$HOME/} ~/
+	ln -sf "${DIR}/${2}" ~/
 }
 
 ###############################################################################

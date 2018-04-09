@@ -106,7 +106,7 @@ function dotSetup() {
     do
         if [[ $ARG == "init" ]] || [[ $ARG == "all" ]]; then
             # Copy and link user's custom files to ~/.
-            ./scripts/init.sh
+            . ./scripts/init.sh
         fi
         if [[ $ARG == "brew" ]] || [[ $ARG == "all" ]]; then
             # Install Homebrew along with common formulae and apps.
