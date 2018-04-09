@@ -1,5 +1,5 @@
 # Path to oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH=/Users/troncali/.oh-my-zsh
 
 # Revise Path to include software and manuals installed by Homebrew
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
