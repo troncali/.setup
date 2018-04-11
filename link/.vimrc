@@ -29,6 +29,8 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
 "   Plugin 'edkolev/promptline.vim'         " Generate shell promptline (**TODO**).
     Plugin 'vim-scripts/sessionman.vim'     " VIM session management.
     Plugin 'gcmt/wildfire.vim'              " Quick text selection.
+	Plugin 'junegunn/fzf.vim'               " Fuzzy file finder.
+	Plugin 'danro/rename.vim'               " Rename current file.
 " }
 
 " CODING PLUGINS ------------------------------------------------------------- {
@@ -43,6 +45,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'majutsushi/tagbar'              " Browse ctags in current file.
     Plugin 'SirVer/ultisnips'               " Code snippet enigine.
     Plugin 'Valloric/YouCompleteMe'         " Code autocompletion engine.
+	Plugin 'editorconfig/editorconfig-vim'  " Project-level style preferences.
 " }
 
 " JAVASCRIPT PLUGINS --------------------------------------------------------- {

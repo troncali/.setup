@@ -619,6 +619,8 @@ cp ~/.setup-assets/Inconsolata-Menlo+Powerline.otf /Library/Fonts
 # Vim                                                                         #
 ###############################################################################
 
+mkdir -p ~/.vim/colors/
+cp ~/.setup-assets/SMYCK/smyck.vim ~/.vim/colors/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null
 vim +PluginInstall +qall
 
