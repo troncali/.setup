@@ -23,11 +23,13 @@ test_brew
 WEB_TECH=( "node                          : Node"
 #          "homebrew/php/php56 --with-gmp : PHP 5.6"
 #          "heroku-toolbelt               : Heroku Toolbelt"
-           "chrome-devtools               : Google DevTools"
 )
+
+WEB_APPS=( "chrome-devtools               : Google DevTools" )
 	
 echo "    -> Install useful web development tools."	
 brew_it "install" WEB_TECH[@]
+brew_it "cask install" WEB_APPS[@]
 
 ###############################################################################
 # Node Packages				                                                  #
@@ -65,4 +67,4 @@ npm_it NPM_PKGS[@]
 ###############################################################################
 
 echo "    -> Clean up."
-brew cleanup
+brew cleanup > /dev/null

@@ -40,4 +40,4 @@ brew_it "cask install" DATA_APPS[@]
 ###############################################################################
 
 echo "    -> Clean up."
-brew cleanup
+brew cleanup > /dev/null
