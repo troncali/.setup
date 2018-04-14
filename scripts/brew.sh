@@ -121,6 +121,7 @@ CLI_TOOLS=( "ack                     : "
 			"zlib                    : " # Compression library; necessary for TigerVNC build.
 			"libjpeg-turbo           : " # Accelerated JPEG de/compression; necessary for TigerVNC build.
 			"fltk                    : " # GUI Toolkit; necessary for TigerVNC build.
+			"thefuck                 : " # Corrects errors in previous console commands.
 #           "exiv2                   : " # Utility to manage image metadata.
 #           "lua                     : " # Lua programming language.
 #           "lynx                    : " # Web browser for Unix and VMS platforms.
