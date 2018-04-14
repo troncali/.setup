@@ -35,6 +35,7 @@ plugins=(
 
 #source $ZSH/oh-my-zsh.sh
 source ~/.shell_prompt.sh
+export CLICOLOR=1
 
 ### ALIASES
 

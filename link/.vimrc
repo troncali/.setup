@@ -16,7 +16,8 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
 
 " GENERAL PLUGINS ------------------------------------------------------------ {
     Plugin 'rking/ag.vim'                   " Search files internally.
-    Plugin 'bling/vim-airline'              " Status and tab bar.
+    Plugin 'vim-airline/vim-airline'        " Status and tab bar.
+	Plugin 'vim-airline/vim-airline-themes' " Themes for Airline.
     Plugin 'kien/ctrlp.vim'                 " Find files.
     Plugin 'tacahiroy/ctrlp-funky'          " Jump to function defs. w/in files.
     Plugin 'Lokaltog/vim-easymotion'        " Navigation within files.
@@ -26,7 +27,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'scrooloose/nerdtree'            " File tree navigator.
     Plugin 'jistr/vim-nerdtree-tabs'        " Better NERDTree integration.
     Plugin 'osyo-manga/vim-over'            " Preview command line replace.
-"   Plugin 'edkolev/promptline.vim'         " Generate shell promptline (**TODO**).
+    Plugin 'edkolev/promptline.vim'         " Generate shell promptline (**TODO**).
     Plugin 'vim-scripts/sessionman.vim'     " VIM session management.
     Plugin 'gcmt/wildfire.vim'              " Quick text selection.
 	Plugin 'junegunn/fzf.vim'               " Fuzzy file finder.
@@ -77,6 +78,7 @@ filetype plugin indent on    " required
     set laststatus=2
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
+	let g:airline_theme='angr'
 " }
 
 " CTRL P {
