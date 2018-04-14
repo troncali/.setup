@@ -35,6 +35,7 @@ CODEDIR=~/Code
 
 # If the folder does not exist, create it.
 mkdir -p "$CODEDIR"
+chmod 700 "$CODEDIR"
 
 # Give the folder a git icon to match appearance of other home-level folders.
 if [ ! -f "$CODEDIR"/Icon? ]; then
