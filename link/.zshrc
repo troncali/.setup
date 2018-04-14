@@ -1,5 +1,6 @@
-# Path to oh-my-zsh installation.
+# Paths to oh-my-zsh installation and customization folder.
 export ZSH=/Users/troncali/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.setup-assets/custom-zsh/
 
 # Revise Path to include software and manuals installed by Homebrew
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -19,12 +20,6 @@ export MANPATH="$(brew --prefix findutils)/libexec/gnubin:$MANPATH"
 export MANPATH="$(brew --prefix gnu-sed)/libexec/gnubin:$MANPATH"
 export MANPATH="$(brew --prefix grep)/libexec/gnubin:$MANPATH"
 
-# Set name of the theme to load from ~/.oh-my-zsh/themes/
-ZSH_THEME="robbyrussell"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Load plugins from ~/.oh-my-zsh/plugins/*.
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -33,9 +28,9 @@ plugins=(
   git
 )
 
-#source $ZSH/oh-my-zsh.sh
-source ~/.shell_prompt.sh
-export CLICOLOR=1
+# Set name of the theme to load from ~/.oh-my-zsh/themes/
+ZSH_THEME="troncali"
+source $ZSH/oh-my-zsh.sh
 
 ### ALIASES
 
