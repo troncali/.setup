@@ -27,7 +27,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'scrooloose/nerdtree'            " File tree navigator.
     Plugin 'jistr/vim-nerdtree-tabs'        " Better NERDTree integration.
     Plugin 'osyo-manga/vim-over'            " Preview command line replace.
-    Plugin 'edkolev/promptline.vim'         " Generate shell promptline (**TODO**).
+    Plugin 'edkolev/promptline.vim'         " Generate shell promptline.
     Plugin 'vim-scripts/sessionman.vim'     " VIM session management.
     Plugin 'gcmt/wildfire.vim'              " Quick text selection.
 	Plugin 'junegunn/fzf.vim'               " Fuzzy file finder.
@@ -116,7 +116,7 @@ filetype plugin indent on    " required
 " ## MISC. CONFIGURATIONS #####################################
 " #############################################################
 
-" COLOR SCHEME {        TODO: FIX SYNTAX COLORS FOR .JS
+" COLOR SCHEME {
     let g:smyck_termcolors = 16
     colorscheme smyck
 " }
