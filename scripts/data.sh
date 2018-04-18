@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-#####################################################################
-# CREDITS & LICENSE #################################################
-#####################################################################
-# Adapted from 
+###############################################################################
+# CREDITS & LICENSE ###########################################################
+###############################################################################
+# Adapted from
 # - https://github.com/donnemartin/dev-setup.git (web.sh)
 #
 # Distributed under the MIT license.
-#####################################################################
+###############################################################################
 
 printf "\ntroncali/.setup : Databases
 ===================================================
@@ -23,20 +23,20 @@ test_brew
 DATABASES=( "mysql      : MySQL"
             "postgresql : PostgresSQL"
 )
-	
+
 DATA_APPS=( "sequel-pro       : Sequel Pro"
 #           "mysqlworkbench   : MySQL Workbench"
-            "valentina-studio : Valentina Studio"
+            "valentina-studio : Valentina Studio" # Note: Uber slow download?
 )
-	
-echo "    -> Install database systems."	
+
+echo "    -> Install database systems."
 brew_it "install" DATABASES[@]
 
-echo "    -> Install data applications."	
+echo "    -> Install data applications."
 brew_it "cask install" DATA_APPS[@]
 
 ###############################################################################
-# Clean Up					                                                  #
+# Clean Up                                                                    #
 ###############################################################################
 
 echo "    -> Clean up."

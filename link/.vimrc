@@ -107,6 +107,9 @@ filetype plugin indent on    " required
 
 " INDENT GUIDES {
     autocmd VimEnter * IndentGuidesEnable
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=236
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+    let g:indent_guides_auto_colors = 0
     let g:indent_guides_guide_size = 1
     let g:indent_guides_space_guides = 1
     let g:indent_guides_start_level = 2
@@ -143,6 +146,11 @@ set window=0
 
 :syntax enable
 :set nu
+
+" Set end-line column at 80.
+autocmd VimEnter,Colorscheme * :hi ColorColumn ctermbg=0
+highlight OverLength ctermbg=1 ctermfg=9
+match OverLength /\%81v.\+/
 set colorcolumn=81
 
 nmap :nt<cr> :NERDTree<cr>

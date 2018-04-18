@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-#####################################################################
-# CREDITS & LICENSE #################################################
-#####################################################################
-# Adapted from 
+###############################################################################
+# CREDITS & LICENSE ###########################################################
+###############################################################################
+# Adapted from
 # - https://github.com/mathiasbynens/dotfiles.git (brew.sh)
 # - https://github.com/donnemartin/dev-setup.git (brew.sh)
 # - https://github.com/jaywcjlove/awesome-mac
 #
 # Distributed under the MIT license.
-#####################################################################
+###############################################################################
 
 printf "\ntroncali/.setup : Homebrew
 ===================================================
@@ -26,11 +26,11 @@ echo "    -> Install applications."
 
 MAC_APPS=( "1password        : 1Password"
            "1password-cli    : "
-		   "betterzip        : BetterZip" # BetterZipQL plugin was integrated with the app.
+           "betterzip        : BetterZip" # For BetterZipQL plugin.
            "cyberduck        : Cyberduck"
            "dash             : Dash"
            "dropbox          : Dropbox"
-		   "electron         : Electron"
+           "electron         : Electron"
            "fontforge        : FontForge"
            "google-chrome    : Google Chrome"
            "inkscape         : Inkscape"
@@ -43,7 +43,7 @@ MAC_APPS=( "1password        : 1Password"
 #          "sparkleshare     : SparkleShare"
            "spotify          : Spotify"
            "textmate         : TextMate"
-		   "virtualbox       : VirtualBox"
+           "virtualbox       : VirtualBox"
            "xquartz          : XQuartz"
 )
 
@@ -59,33 +59,33 @@ brew_it "cask install" MAC_APPS[@]
 
 echo "    -> Update macOS Tools."
 
-# Install GNU core utilities (macOS versions are outdated) and other GNU utils.
-#     Note: '$PATH' modifications in .zshrc point to GNU utilities before macOS 
-# utilities so they may be run without a 'g' prefix (sed instead of gsed). 
+# Install GNU core utilities (macOS versions are outdated) and other GNU utils
+#     Note: '$PATH' modifications in .zshrc point to GNU utilities before macOS
+# utilities so they may be run without a 'g' prefix (sed instead of gsed).
 # Remove these paths from .zshrc if you prefer to leave macOS default utilities
-# in tact and access GNU utilities with the 'g' prefix. If using a different 
+# in tact and access GNU utilities with the 'g' prefix. If using a different
 # shell, be sure to update your '$PATH' accordingly.
 GNU_TOOLS=( "coreutils : GNU core and related utilities"
             "moreutils : "
             "findutils : "
             "gnu-sed   : "
-			"gnutls    : "
-			"gettext   : "
+            "gnutls    : "
+            "gettext   : "
             "grep      : "
             "wget      : "
             "screen    : "
-            "rsync     : " 
-)		
+            "rsync     : "
+)
 
 MAC_TOOLS=( "zsh                           : Zsh"
             "vim --with-override-system-vi : Vim"
-            "openssh                       : OpenSSH" 
+            "openssh                       : OpenSSH"
 )
-	
+
 GIT_TOOLS=( "git        : Git and related tools"
-            "git-flow   : " # High-level repository operations for Vincent Driessen's branching model.
+            "git-flow   : " # Repo ops for Vincent Driessen branching model.
             "git-lfs    : " # Git extention for versioning large files.
-            "bfg        : " # Simpler, faster (but less sophisticated) alternative to git-filter-branch.
+            "bfg        : " # Simpler, faster alt to git-filter-branch.
 #           "git-extras : "
 #           "hub        : " # Command line wrapper for git.
 )
@@ -113,25 +113,25 @@ echo "    -> Install other useful CLI tools."
 CLI_TOOLS=( "ack                     : "
             "cmake                   : "
             "imagemagick --with-webp : " # Bitmap image manipulation tool.
-            "pv                      : " # Tool to monitor the progress of data through a pipeline.
-            "rename                  : " # Tool to rename files according to modification rules.
-            "speedtest_cli           : " # CLI for testing internet bandwith using speedtest.net.
-            "tree                    : " # Recursive directory listing command with indented listing.
+            "pv                      : " # Monitor data progress through pipe.
+            "rename                  : " # Rename files according to rules.
+            "speedtest_cli           : " # Bandwith test using speedtest.net.
+            "tree                    : " # Indented recursive dir list command.
             "dark-mode               : " # CLI for macOS 'Dark Mode'.
-			"zlib                    : " # Compression library; necessary for TigerVNC build.
-			"libjpeg-turbo           : " # Accelerated JPEG de/compression; necessary for TigerVNC build.
-			"fltk                    : " # GUI Toolkit; necessary for TigerVNC build.
-			"thefuck                 : " # Corrects errors in previous console commands.
+            "zlib                    : " # Compression library for TigerVNC.
+            "libjpeg-turbo           : " # JPEG de/compression for TigerVNC.
+            "fltk                    : " # GUI Toolkit for TigerVNC.
+            "thefuck                 : " # Corrects errors in console commands.
 #           "exiv2                   : " # Utility to manage image metadata.
 #           "lua                     : " # Lua programming language.
-#           "lynx                    : " # Web browser for Unix and VMS platforms.
+#           "lynx                    : " # Web browser for Unix platforms.
 #           "p7zip                   : " # Command line version of 7-Zip.
 #           "pigz                    : " # Parallel implementation of gzip.
-#           "rhino                   : " # Open-source implementation of JavaScript written in Java.
-#           "ssh-copy-id             : " # Add a public key to a remote machine's authorized_keys file
+#           "rhino                   : " # Java implimentation of JavaScript.
+#           "ssh-copy-id             : " # Add public key to remote machine.
 #           "testssl                 : " # TLS/SSL security testing.
-#           "vbindiff                : " # Displays files in hexadecimal and ASCII, highlighting differences.
-#           "webkit2png              : " # Create screenshots of webpages from the terminal.
+#           "vbindiff                : " # Hi diffs in hex and ASCII files.
+#           "webkit2png              : " # Webpage snapshots from terminal.
 #           "zopfli                  : " # Zopfli compression algorithm
 #           "libxml2                 : " # XML C parser and toolkit.
 #           "libxslt                 : " # XSLT C library.
@@ -139,41 +139,41 @@ CLI_TOOLS=( "ack                     : "
 #           "libxslt --force         : "
 #           "pkg-config              : " # Tool to help insert compiler options.
 #           "libffi                  : " # Foreign Function Interface Library.
-#           "pandoc                  : " # Tool to convert one markup format to another.
+#           "pandoc                  : " # Convert one markup format to another.
 )
-	
+
 #brew tap bramstein/webfonttools
 WEB_FONTS=( ""
 #           "sfnt2woff        : "
 #           "sfnt2woff-zopfli : "
 #           "woff2            : "
 )
-	
+
 # Capture-the-Flag Tools: see https://github.com/ctfs/write-ups.
 CTF_TOOLS=( ""
-#			"aircrack-ng : " # Suite of tools to assess WiFi network security.
-#			"binutils    : "
-#			"binwalk     : " # Tool to analyze and extract firmware images.
-#			"cifer       : " # Tool to automate classical cipher cracking in C.
-#			"dex2jar     : " # Tools to work with android .dex and java .class files.
-#			"dns2tcp     : " # Tools to encapsulate TCP session in DNS packets.
-#			"fcrackzip   : " # Tool to crack zip passwords.
-#			"foremost    : " # Tool to recover files based on headers, footers, and data structures.
-#			"hashpump    : " # Tool to exploit the hash length extension attack.
-#			"hydra       : " # Network logon cracker.
-#			"john        : " # John the Ripper password cracker.
-#			"knock       : " # Port-knock client.
-#			"netpbm      : " # Toolkit for manipulation of graphic images.
-#			"nmap        : " # Network Mapper, utility for network discovery and security auditing.
-#			"pngcheck    : " # PNG image integrity verification and statistics.
-#			"socat       : " # Bidirectional data transfer between independent data channels.
-#			"sqlmap      : " # Penetration testing tool to automate process of detecting adn exploiting SQL injection flaws.
-#			"tcpflow     : " # TCIP/IP packet demultiplexer.
-#			"tcpreplay   : " # Tools for editing and replaying captured network traffic.
-#			"tcptrace    : " # Tool for analysis of TCP dump files.
-#			"ucspi""-tcp : " # `tcpserver` etc.
-#			"xpdf        : " # PDF viewer and toolkit.
-#			"xz          : " # Data compression software.
+#           "aircrack-ng : " # Suite of tools to assess WiFi network security.
+#           "binutils    : "
+#           "binwalk     : " # Tool to analyze and extract firmware images.
+#           "cifer       : " # Tool to automate classical cipher cracking in C.
+#           "dex2jar     : " # Tools for android .dex and java .class files.
+#           "dns2tcp     : " # Tools to encapsulate TCP session in DNS packets.
+#           "fcrackzip   : " # Tool to crack zip passwords.
+#           "foremost    : " # Tool to recover files.
+#           "hashpump    : " # Tool to exploit the hash length extension attack.
+#           "hydra       : " # Network logon cracker.
+#           "john        : " # John the Ripper password cracker.
+#           "knock       : " # Port-knock client.
+#           "netpbm      : " # Toolkit for manipulation of graphic images.
+#           "nmap        : " # Network discovery and security auditing tool.
+#           "pngcheck    : " # PNG image integrity verification and statistics.
+#           "socat       : " # Data transfer between independent data channels.
+#           "sqlmap      : " # Penetration testing tool for SQL injection flaws.
+#           "tcpflow     : " # TCIP/IP packet demultiplexer.
+#           "tcpreplay   : " # Edit and replay captured network traffic.
+#           "tcptrace    : " # Tool for analysis of TCP dump files.
+#           "ucspi""-tcp : " # `tcpserver` etc.
+#           "xpdf        : " # PDF viewer and toolkit.
+#           "xz          : " # Data compression software.
 )
 
 brew_it "install" CLI_TOOLS[@]
