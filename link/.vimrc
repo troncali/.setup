@@ -1,8 +1,15 @@
-" Matt Troncali's VIM configuration for OS X.
+" #############################################################################
+" # CREDITS & LICENSE #########################################################
+" #############################################################################
+" # Matt Troncali's VIM configuration for OS X, adapted from
+" # - http://TODO
+" #
+" # Distributed under the MIT license.
+" #############################################################################
 
-" ###############################################################
-" ## VUNDLE CONFIG ##############################################
-" ###############################################################
+" #############################################################################
+" # Vundle Configuration                                                      #
+" #############################################################################
 
 set nocompatible    " Required.
 filetype off        " Required.
@@ -17,7 +24,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
 " GENERAL PLUGINS ------------------------------------------------------------ {
     Plugin 'rking/ag.vim'                   " Search files internally.
     Plugin 'vim-airline/vim-airline'        " Status and tab bar.
-	Plugin 'vim-airline/vim-airline-themes' " Themes for Airline.
+    Plugin 'vim-airline/vim-airline-themes' " Themes for Airline.
     Plugin 'kien/ctrlp.vim'                 " Find files.
     Plugin 'tacahiroy/ctrlp-funky'          " Jump to function defs. w/in files.
     Plugin 'Lokaltog/vim-easymotion'        " Navigation within files.
@@ -30,8 +37,8 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'edkolev/promptline.vim'         " Generate shell promptline.
     Plugin 'vim-scripts/sessionman.vim'     " VIM session management.
     Plugin 'gcmt/wildfire.vim'              " Quick text selection.
-	Plugin 'junegunn/fzf.vim'               " Fuzzy file finder.
-	Plugin 'danro/rename.vim'               " Rename current file.
+    Plugin 'junegunn/fzf.vim'               " Fuzzy file finder.
+    Plugin 'danro/rename.vim'               " Rename current file.
 " }
 
 " CODING PLUGINS ------------------------------------------------------------- {
@@ -46,7 +53,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'majutsushi/tagbar'              " Browse ctags in current file.
     Plugin 'SirVer/ultisnips'               " Code snippet enigine.
     Plugin 'Valloric/YouCompleteMe'         " Code autocompletion engine.
-	Plugin 'editorconfig/editorconfig-vim'  " Project-level style preferences.
+    Plugin 'editorconfig/editorconfig-vim'  " Project-level style preferences.
 " }
 
 " JAVASCRIPT PLUGINS --------------------------------------------------------- {
@@ -67,18 +74,15 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" see :h vundle for more details or wiki for FAQ
-
-
-" ###############################################################
-" ## PLUGIN CONFIGURATIONS (Alphabetical Order) #################
-" ###############################################################
+" #############################################################################
+" # Plugin Configurations (Alphabetical Order)                                #
+" #############################################################################
 
 " AIRLINE {
     set laststatus=2
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
-	let g:airline_theme='angr'
+    let g:airline_theme='angr'
 " }
 
 " CTRL P {
@@ -115,9 +119,9 @@ filetype plugin indent on    " required
     let g:indent_guides_start_level = 2
 " }
 
-" #############################################################
-" ## MISC. CONFIGURATIONS #####################################
-" #############################################################
+" #############################################################################
+" # Misc. Configurations                                                      #
+" #############################################################################
 
 " COLOR SCHEME {
     let g:smyck_termcolors = 16
@@ -147,8 +151,8 @@ set window=0
 :syntax enable
 :set nu
 
-" Set end-line column at 80.
-autocmd VimEnter,Colorscheme * :hi ColorColumn ctermbg=0
+" Set end-line column at 81 and highlight extra text in red.
+autocmd VimEnter,Colorscheme * :hi ColorColumn ctermbg=236
 highlight OverLength ctermbg=1 ctermfg=9
 match OverLength /\%81v.\+/
 set colorcolumn=81

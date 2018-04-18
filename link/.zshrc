@@ -1,9 +1,9 @@
 # Paths to oh-my-zsh installation and customization folder.
-export ZSH=/Users/troncali/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.setup-assets/custom-zsh/
 
 # Revise Path to include software and manuals installed by Homebrew.
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Paths to GNU utilities.
@@ -20,6 +20,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 #export MANPATH="$(brew --prefix gnu-sed)/libexec/gnubin:$MANPATH"
 #export MANPATH="$(brew --prefix grep)/libexec/gnubin:$MANPATH"
 
+###############################################################################
+# ZSH Configuration                                                           #
+###############################################################################
+
 # Load plugins from ~/.oh-my-zsh/plugins/*.
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -28,12 +32,19 @@ plugins=(
   git
 )
 
-# Set theme name to load from ~/.oh-my-zsh/themes/ or custom theme path, then load.
+# Set theme to load from ~/.oh-my-zsh/themes/ or custom theme path.
 ZSH_THEME="troncali"
 source $ZSH/oh-my-zsh.sh
 
-### ALIASES
+###############################################################################
+# Aliases                                                                     #
+###############################################################################
 
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+# Toggle invisible files.
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall\
+        Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall\
+        Finder /System/Library/CoreServices/Finder.app'
+
+# Use 'fuck' for thefuck.
 eval $(thefuck --alias)
