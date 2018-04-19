@@ -1,0 +1,63 @@
+###############################################################################
+# CREDITS & LICENSE ###########################################################
+###############################################################################
+# Adapted from
+# - https://gist.github.com/joaopizani/2718397
+#
+# Distributed under the MIT license.
+###############################################################################
+
+# Set the status line, with the current window highlighted.
+# See https://www.gnu.org/software/screen/manual/html_node/String-Escapes.html
+hardstatus ignore # alwayslastline to display hardstatus.
+hardstatus string '%{= dd}%= %{= dK}%-w%{kW} %n*%t%?(%u)%? %{-}%+w %='
+rendition so =00 # Remove vertical region borders.
+
+# huge scrollback buffer
+defscrollback 5000
+
+# no welcome message
+startup_message off
+
+# 256 colors
+attrcolor b ".I"
+term xterm-256color
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+# mouse tracking allows to switch region focus by clicking
+mousetrack on
+
+# Default windows.
+screen -t "Vim"   1 vim
+screen -t "Vim"   2 vim
+screen -t "Shell" 3
+screen -t "Shell" 4
+
+# get rid of silly xoff stuff
+bind s split
+
+# Set region layout.
+select 1
+split -v
+focus right
+select 2
+split -v
+focus right
+select 3
+split
+focus down
+select 4
+
+# Navigate regions with Option + hjkl
+bindkey "^[h" focus left
+bindkey "^[l" focus right
+bindkey "^[k" focus up
+bindkey "^[j" focus down
+
+# F2 enters resize mode. Resize regions using hjkl keys.
+bindkey "^[OQ" eval "command -c rsz" # enter resize mode
+bind -c rsz h eval "resize -h -5" "command -c rsz"
+bind -c rsz j eval "resize -v -5" "command -c rsz"
+bind -c rsz k eval "resize -v +5" "command -c rsz"
+bind -c rsz l eval "resize -h +5" "command -c rsz"

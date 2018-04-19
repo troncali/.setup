@@ -40,6 +40,11 @@ source $ZSH/oh-my-zsh.sh
 # Aliases                                                                     #
 ###############################################################################
 
+# Adjust terminal size when starting and killing GNU screen.
+alias screen="printf '\e[8;54;280t' && screen"
+alias 3size="printf '\e[8;54;280t'"
+alias 1size="printf '\e[8;53;90t'"
+
 # Toggle invisible files.
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall\
         Finder /System/Library/CoreServices/Finder.app'
