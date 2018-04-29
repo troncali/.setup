@@ -49,7 +49,7 @@ cd "$SETUP_ASSETS"/TigerVNC
 PATH="$LIBICONV_LOC/bin:$JPEG_LOC/bin:$LIBTOOL_LOC/bin:$ORIG_PATH"
 PATH="$X11_LOC:$GETTEXT_LOC/bin:$PATH"
 
-cmake -E env cmake -G "Unix Makefiles" \
+cmake -G "Unix Makefiles" \
         -DGETTEXT_INCLUDE_DIR=$GETTEXT_LOC/include \
         -DLIBINTL_LIBRARY=$GETTEXT_LOC/lib/libintl.dylib \
         -DICONV_INCLUDE_DIR=$LIBICONV_LOC/include \
