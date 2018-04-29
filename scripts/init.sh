@@ -61,7 +61,7 @@ function link_test() {
     # If destination file exists, test whether it matches the file to be linked.
     # SOURCE: https://superuser.com/questions/196572/check-if-two-paths-are-
     # pointing-to-the-same-file
-    if [[ -e "$dest_file" && "$(stat -f '%d:%i' "$link_file")" == "$(stat -f '%d:%i' "$dest_file")" ]]; then 
+    if [[ -e "$dest_file" && "$(stat -f '%d:%i' "$link_file")" == "$(stat -f '%d:%i' "$dest_file")" ]]; then
         echo "same file"
     fi 2> /dev/null
 }
@@ -83,7 +83,7 @@ function do_stuff() {
 
     # If there are no files other than .DS_Store, print a message and stop.
     if [[ "${files[@]}" == "$1/*" && ( "${dotfiles[@]}" == "$1/.[!.]*" || "${dotfiles[@]}" == "$1/.DS_Store" ) ]]; then
-        echo "       :: No files in $1 directory."; 
+        echo "       :: No files in $1 directory.";
         return
     fi
 
@@ -115,7 +115,7 @@ function do_stuff() {
         fi
 
         # Do stuff.
-        "$1_do" "$base" "$file" 
+        "$1_do" "$base" "$file"
     done
 }
 

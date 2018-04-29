@@ -3,7 +3,7 @@
 #####################################################################
 # CREDITS & LICENSE #################################################
 #####################################################################
-# Adapted from 
+# Adapted from
 # - https://github.com/mathiasbynens/dotfiles.git (.macos)
 # - https://github.com/donnemartin/dev-setup.git (osx.sh)
 #
@@ -275,9 +275,9 @@ chflags nohidden ~/Library
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+    General -bool true \
+    OpenWith -bool true \
+    Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -517,28 +517,28 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 # 	MENU_WEBSEARCH             (send search queries to Apple)
 # 	MENU_OTHER
 defaults write com.apple.spotlight orderedItems -array \
-	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
-	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-	'{"enabled" = 1;"name" = "CONTACT";}' \
-	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
-	'{"enabled" = 1;"name" = "PDF";}' \
-	'{"enabled" = 1;"name" = "DOCUMENTS";}' \
-	'{"enabled" = 1;"name" = "PRESENTATIONS";}' \
-	'{"enabled" = 1;"name" = "SPREADSHEETS";}' \
-	'{"enabled" = 1;"name" = "MESSAGES";}' \
-	'{"enabled" = 1;"name" = "IMAGES";}' \
-	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
-	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
-	'{"enabled" = 0;"name" = "MUSIC";}' \
-	'{"enabled" = 0;"name" = "MOVIES";}' \
-	'{"enabled" = 0;"name" = "SOURCE";}' \
-	'{"enabled" = 0;"name" = "FONTS";}' \
-	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-	'{"enabled" = 0;"name" = "MENU_OTHER";}' \
-	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+    '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+    '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+    '{"enabled" = 1;"name" = "CONTACT";}' \
+    '{"enabled" = 1;"name" = "DIRECTORIES";}' \
+    '{"enabled" = 1;"name" = "PDF";}' \
+    '{"enabled" = 1;"name" = "DOCUMENTS";}' \
+    '{"enabled" = 1;"name" = "PRESENTATIONS";}' \
+    '{"enabled" = 1;"name" = "SPREADSHEETS";}' \
+    '{"enabled" = 1;"name" = "MESSAGES";}' \
+    '{"enabled" = 1;"name" = "IMAGES";}' \
+    '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+    '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+    '{"enabled" = 0;"name" = "MUSIC";}' \
+    '{"enabled" = 0;"name" = "MOVIES";}' \
+    '{"enabled" = 0;"name" = "SOURCE";}' \
+    '{"enabled" = 0;"name" = "FONTS";}' \
+    '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+    '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+    '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+    '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+    '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+    '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 
 # Load new settings before rebuilding the index
 killall mds > /dev/null 2>&1
@@ -563,34 +563,34 @@ sudo mdutil -E / > /dev/null
 # SMYCK Color Scheme distributed under the MIT license.
 osascript <<EOD
 tell application "Terminal"
-	local allOpenedWindows
-	local initialOpenedWindows
-	local windowID
-	set themeName to "Smyck"
-	(* Store the IDs of all the open terminal windows. *)
-	set initialOpenedWindows to id of every window
-	(* Open the custom theme so that it gets added to the list
-	   of available terminal themes (note: this will open two
-	   additional terminal windows). *)
-	do shell script "open 'copy/.setup-assets/SMYCK/" & themeName & ".terminal'"
-	(* Wait a little bit to ensure that the custom theme is added. *)
-	delay 1
-	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeName
-	(* Get the IDs of all the currently opened terminal windows. *)
-	set allOpenedWindows to id of every window
-	repeat with windowID in allOpenedWindows
-		(* Close the additional windows that were opened in order
-		   to add the custom theme to the list of terminal themes. *)
-		if initialOpenedWindows does not contain windowID then
-			close (every window whose id is windowID)
-		(* Change the theme for the initial opened terminal windows
-		   to remove the need to close them in order for the custom
-		   theme to be applied. *)
-		else
-			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-		end if
-	end repeat
+    local allOpenedWindows
+    local initialOpenedWindows
+    local windowID
+    set themeName to "Smyck"
+    (* Store the IDs of all the open terminal windows. *)
+    set initialOpenedWindows to id of every window
+    (* Open the custom theme so that it gets added to the list
+       of available terminal themes (note: this will open two
+       additional terminal windows). *)
+    do shell script "open 'copy/.setup-assets/SMYCK/" & themeName & ".terminal'"
+    (* Wait a little bit to ensure that the custom theme is added. *)
+    delay 1
+    (* Set the custom theme as the default terminal theme. *)
+    set default settings to settings set themeName
+    (* Get the IDs of all the currently opened terminal windows. *)
+    set allOpenedWindows to id of every window
+    repeat with windowID in allOpenedWindows
+        (* Close the additional windows that were opened in order
+            to add the custom theme to the list of terminal themes. *)
+        if initialOpenedWindows does not contain windowID then
+            close (every window whose id is windowID)
+        (* Change the theme for the initial opened terminal windows
+            to remove the need to close them in order for the custom
+            theme to be applied. *)
+        else
+            set current settings of tabs of (every window whose id is windowID) to settings set themeName
+        end if
+    end repeat
 end tell
 EOD
 
@@ -610,19 +610,26 @@ cp ~/.setup-assets/Inconsolata-Menlo+Powerline.otf /Library/Fonts
 #defaults write com.apple.Terminal ShowLineMarks -int 0
 
 ###############################################################################
-# Oh My Zsh                                                                   #
-###############################################################################
-
-## TODO: Configure Oh-My-ZSH.
-
-###############################################################################
 # Vim                                                                         #
 ###############################################################################
 
+# Add SMYCK colors.
 mkdir -p ~/.vim/colors/
 cp ~/.setup-assets/SMYCK/smyck.vim ~/.vim/colors/
+
+# Install Vundle and Plugins.
 git clone --quiet https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null
 vim +PluginInstall +qall
+
+# Build YouCompleteMe
+mkdir -p ~/.setup-assets/
+cd ~/.setup-assets/
+mkdir -p ycm_build
+cd ycm_build
+cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp > /dev/null
+cmake --build . --target ycm_core > /dev/null
+cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/tern_runtime
+npm install --production > /dev/null
 
 ###############################################################################
 # iTerm 2                                                                     #
@@ -790,19 +797,19 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 # Kill affected applications                                                  #
 ###############################################################################
 for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SystemUIServer" \
-	"iCal"; do
-	killall "${app}" &> /dev/null
+    "Address Book" \
+    "Calendar" \
+    "cfprefsd" \
+    "Contacts" \
+    "Dock" \
+    "Finder" \
+    "Google Chrome Canary" \
+    "Google Chrome" \
+    "Mail" \
+    "Messages" \
+    "Photos" \
+    "Safari" \
+    "SystemUIServer" \
+    "iCal"; do
+    killall "${app}" &> /dev/null
 done
