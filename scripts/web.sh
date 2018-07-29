@@ -21,6 +21,7 @@ test_brew
 ###############################################################################
 
 WEB_TECH=( "node                          : Node"
+           "yarn                          : Yarn"
 #          "homebrew/php/php56 --with-gmp : PHP 5.6"
 #          "heroku-toolbelt               : Heroku Toolbelt"
 )
