@@ -138,13 +138,6 @@ CLI_TOOLS=( "ack                     : "
 #           "pandoc                  : " # Convert one markup format to another.
 )
 
-#brew tap bramstein/webfonttools
-WEB_FONTS=( ""
-#           "sfnt2woff        : "
-#           "sfnt2woff-zopfli : "
-#           "woff2            : "
-)
-
 # Capture-the-Flag Tools: see https://github.com/ctfs/write-ups.
 CTF_TOOLS=( ""
 #           "aircrack-ng : " # Suite of tools to assess WiFi network security.
@@ -173,7 +166,6 @@ CTF_TOOLS=( ""
 )
 
 brew_it "install" CLI_TOOLS[@]
-#brew_it "install" WEB_FONTS[@]
 #brew_it "install" CTF_TOOLS[@]
 
 ###############################################################################
