@@ -26,6 +26,7 @@ echo "    -> Install applications."
 
 MAC_APPS=( "1password        : 1Password"
            "1password-cli    : "
+           "atom             : Atom"
            "betterzip        : BetterZip" # For BetterZipQL plugin.
            "cyberduck        : Cyberduck"
            "dash             : Dash"
@@ -38,12 +39,10 @@ MAC_APPS=( "1password        : 1Password"
            "java             : Java"
            "microsoft-office : Microsoft Office"
            "openoffice       : OpenOffice"
-#          "parallels        : Parallels"
+           "postman          : Postman"
            "sourcetree       : Sourcetree"
            "spark            : Spark"
-#          "sparkleshare     : SparkleShare"
            "spotify          : Spotify"
-           "textmate         : TextMate"
            "virtualbox       : VirtualBox"
            "xquartz          : XQuartz"
 )
@@ -112,16 +111,12 @@ brew_it "cask install" QL_PLUGS[@]
 echo "    -> Install other useful CLI tools."
 
 CLI_TOOLS=( "ack                     : "
-            "cmake                   : "
             "imagemagick --with-webp : " # Bitmap image manipulation tool.
             "pv                      : " # Monitor data progress through pipe.
             "rename                  : " # Rename files according to rules.
             "speedtest_cli           : " # Bandwith test using speedtest.net.
             "tree                    : " # Indented recursive dir list command.
             "dark-mode               : " # CLI for macOS 'Dark Mode'.
-            "zlib                    : " # Compression library for TigerVNC.
-            "libjpeg-turbo           : " # JPEG de/compression for TigerVNC.
-            "fltk                    : " # GUI Toolkit for TigerVNC.
             "thefuck                 : " # Corrects errors in console commands.
 #           "exiv2                   : " # Utility to manage image metadata.
 #           "lua                     : " # Lua programming language.
