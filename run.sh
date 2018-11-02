@@ -103,6 +103,9 @@ if [ -z "$@" ]; then
 fi
 
 function dotSetup() {
+    # Set ASSETS directory.
+    ASSETS=~/.setup-assets
+    
     # Gain administrative access; update 'sudo' timestamp until script
     # terminates to prevent multiple prompts.
     sudo -v

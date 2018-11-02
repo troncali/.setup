@@ -3,7 +3,7 @@
 #####################################################################
 # CREDITS & LICENSE #################################################
 #####################################################################
-# Adapted from 
+# Adapted from
 # - https://github.com/mathiasbynens/dotfiles.git (.macos, brew.sh)
 # - https://github.com/donnemartin/dev-setup.git (osxprep.sh, osx.sh)
 #
