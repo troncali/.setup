@@ -39,10 +39,12 @@ chmod 700 "$CODEDIR"
 
 # Give the folder a git icon to match appearance of other home-level folders.
 if [ ! -f "$CODEDIR"/Icon? ]; then
-    git clone --depth 1 git://github.com/lgarron/folderify.git "$ASSETS"/folderify --quiet
-    cd "$ASSETS"/folderify
-    python -m folderify "$ASSETS"/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
-    rm -rf "$ASSETS"/folderify
+    # git clone --depth 1 git://github.com/lgarron/folderify.git "$ASSETS"/folderify --quiet
+    # cd "$ASSETS"/folderify
+    # python -m folderify "$ASSETS"/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
+    # rm -rf "$ASSETS"/folderify
+    brew install folderify > /dev/null
+    folderify "$ASSETS"/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
 fi
 
 cd $DIR # Change back to run.sh directory.

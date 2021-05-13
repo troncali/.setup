@@ -51,7 +51,7 @@ MAC_APPS=( "1password          : 1Password"
 #          "xquartz            : XQuartz"
 )
 
-brew_it "cask install" MAC_APPS[@]
+brew_it "install --cask" MAC_APPS[@]
 
 ###############################################################################
 # Update macOS Tools                                                          #
@@ -84,7 +84,7 @@ MAC_TOOLS=( "zsh       : Zsh"
 
 GIT_TOOLS=( "git        : Git and related tools"
 #           "git-flow   : " # Repo ops for Vincent Driessen branching model.
-#           "git-lfs    : " # Git extention for versioning large files.
+            "git-lfs    : " # Git extention for versioning large files.
 #           "bfg        : " # Simpler, faster alt to git-filter-branch.
 #           "git-extras : "
 #           "hub        : " # Command line wrapper for git.
@@ -111,7 +111,7 @@ brew_it "install" GIT_TOOLS[@]
 echo "    -> Install other useful CLI tools."
 
 CLI_TOOLS=( "ack             : "
-#           "imagemagick     : " # Bitmap image manipulation tool.
+            "imagemagick     : " # Bitmap image manipulation tool.
 #           "pv              : " # Monitor data progress through pipe.
 #           "rename          : " # Rename files according to rules.
 #           "speedtest_cli   : " # Bandwith test using speedtest.net.

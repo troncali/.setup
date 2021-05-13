@@ -25,16 +25,16 @@ test_brew
 #             "mongodb    : MongoDB"
 # )
 
-DATA_APPS=( "dbeaver-community         : DBeaver Community Edition"
-            "mongodb-compass-community : MongoDB Compass Community Edition"
-            "sequel-pro                : Sequel Pro"
+DATA_APPS=( "dbeaver-community : DBeaver Community Edition"
+            "mongodb-compass   : MongoDB Compass"
+            "sequel-pro        : Sequel Pro"
 )
 
 # echo "    -> Install database systems."
 # brew_it "install" DATABASES[@]
 
 echo "    -> Install data applications."
-brew_it "cask install" DATA_APPS[@]
+brew_it "install --cask" DATA_APPS[@]
 
 ###############################################################################
 # Clean Up                                                                    #

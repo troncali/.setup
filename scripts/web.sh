@@ -31,7 +31,7 @@ WEB_APPS=( "chrome-devtools : Google DevTools"
 
 echo "    -> Install useful web development tools."
 brew_it "install" WEB_TECH[@]
-brew_it "cask install" WEB_APPS[@]
+brew_it "install --cask" WEB_APPS[@]
 
 ###############################################################################
 # Node Packages                                                               #
