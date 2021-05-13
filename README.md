@@ -27,7 +27,7 @@ cd ~/Code/.setup
 ./run.sh
 ```
 
-![Image of run.sh](https://github.com/troncali/.setup/copy/.setup-assets/run.png)
+![Image of run.sh](https://raw.githubusercontent.com/troncali/.setup/master/copy/.setup-assets/run.png)
 
 ### Customize
 
