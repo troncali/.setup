@@ -22,13 +22,13 @@ function __promptline_ps1 {
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
-  __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$(__promptline_host)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "b" slices
-  __promptline_wrapper "" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "c" header
   slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
@@ -111,13 +111,13 @@ function __promptline_left_prompt {
   __promptline_wrapper "" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "c" header
-  slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
+  slice_prefix="${reset_bg}${c_bg}${sep}${reset}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "c" slices
   __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
-  printf "%s" "${reset_bg}${sep}$reset$space"
+  printf "%s" "${reset_bg}$reset$space$space" # "${reset_bg}${sep}$reset$space"
 }
 function __promptline_wrapper {
   # wrap the text in $1 with $2 and $3, only if $1 is not empty
@@ -129,8 +129,11 @@ function __promptline_wrapper {
 function __promptline_right_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix
 
+  # fix bright separator at beginning
+  printf "%s" "${reset_bg}"
+
   # section "warn" header
-  slice_prefix="${warn_sep_fg}${rsep}${warn_fg}${warn_bg}${space}" slice_suffix="$space${warn_sep_fg}" slice_joiner="${warn_fg}${warn_bg}${alt_rsep}${space}" slice_empty_prefix=""
+  slice_prefix="${reset_bg}${warn_sep_fg}${rsep}${warn_fg}${warn_bg}${space}" slice_suffix="$space${warn_sep_fg}" slice_joiner="${warn_fg}${warn_bg}${alt_rsep}${space}" slice_empty_prefix="${reset_bg}"
   # section "warn" slices
   __promptline_wrapper "$(__promptline_last_exit_code)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
@@ -140,7 +143,7 @@ function __promptline_right_prompt {
   __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
   # close sections
-  printf "%s" "$reset${wrap}0${end_wrap}"
+  printf "%s" "$reset"
 }
 function __promptline {
   local last_exit_code="${PROMPTLINE_LAST_EXIT_CODE:-$?}"
@@ -159,12 +162,12 @@ function __promptline {
   local rsep=""
   local alt_sep=""
   local alt_rsep=""
-  
+
   ### Color guides: http://blog.taylormcgann.com/tag/prompt-color/
   ###				https://misc.flogisoft.com/bash/tip_colors_and_formatting
-  
-  local reset="${wrap}97${end_wrap}"
-  local reset_bg="${wrap}48;5;235${end_wrap}"
+
+  local reset="${wrap}0${end_wrap}" #97
+  local reset_bg="${wrap}48;5;235${end_wrap}" #48;5;235
   local a_fg="${wrap}30${end_wrap}"
   local a_bg="${wrap}102${end_wrap}"
   local a_sep_fg="${wrap}92${end_wrap}"
@@ -172,7 +175,7 @@ function __promptline {
   local b_bg="${wrap}48;5;237${end_wrap}"
   local b_sep_fg="${wrap}38;5;237${end_wrap}"
   local c_fg="${wrap}90${end_wrap}"
-  local c_bg="${wrap}48;5;235${end_wrap}"
+  local c_bg="" #48;5;235
   local c_sep_fg="${wrap}38;5;235${end_wrap}"
   local warn_fg="${wrap}91${end_wrap}"
   local warn_bg="${wrap}41${end_wrap}"

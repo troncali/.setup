@@ -9,7 +9,7 @@
 # Distributed under the MIT license.
 ###############################################################################
 
-printf "\ntroncali/.setup : Databases
+printf "\n~/.setup : Databases
 ===================================================
 Configuring databases and related tools.\n"
 
@@ -20,17 +20,18 @@ test_brew
 # Data Stores & Applications                                                  #
 ###############################################################################
 
-DATABASES=( "mysql      : MySQL"
-            "postgresql : PostgresSQL"
+# DATABASES=( "mysql      : MySQL"
+#             "postgresql : PostgresSQL"
+#             "mongodb    : MongoDB"
+# )
+
+DATA_APPS=( "dbeaver-community         : DBeaver Community Edition"
+            "mongodb-compass-community : MongoDB Compass Community Edition"
+            "sequel-pro                : Sequel Pro"
 )
 
-DATA_APPS=( "sequel-pro       : Sequel Pro"
-#           "mysqlworkbench   : MySQL Workbench"
-            "valentina-studio : Valentina Studio" # Note: Uber slow download?
-)
-
-echo "    -> Install database systems."
-brew_it "install" DATABASES[@]
+# echo "    -> Install database systems."
+# brew_it "install" DATABASES[@]
 
 echo "    -> Install data applications."
 brew_it "cask install" DATA_APPS[@]

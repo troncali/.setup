@@ -12,15 +12,11 @@
 # Distributed under the MIT license.
 ###############################################################################
 
-printf "\n
-troncali/.setup
-===================================================
-Github Credits: donnemartin, mathiasbynens, cowboy.
-Distributed under the MIT License.\n"
+printf "\n~/.setup
+==================================================="
 
 # Resolve the source directory from which this script is running.
-# Credit: http://stackoverflow.com/questions/59895/getting-the-source-
-# directory-of-a-bash-script-from-within
+# Credit: http://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until file is no longer a symlink
     DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
@@ -35,14 +31,14 @@ cd $DIR #set DIR as the current working directory
 # Brew Functions                                                              #
 ###############################################################################
 
-# Is Homebrew installed?
+# Is Homebrew installed and updated?
 function test_brew() {
-    brewurl="https://raw.githubusercontent.com/Homebrew/install/master/install"
+    brewurl="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
 
     if test ! $(which brew); then
         echo "    -> Installing Homebrew and commonly used formulae and"\
             "applications."
-        ruby -e "$(curl -fsSL ${brewurl})" > /dev/null
+        /bin/bash -c "$(curl -fsSL ${brewurl})" > /dev/null
     else
         echo "    -> Updating Homebrew and commonly used formulae and"\
             "applications."
@@ -92,8 +88,8 @@ function brew_it() {
 # .setup Scope Functions                                                      #
 ###############################################################################
 
-prompt1="Please specify the scope of your desired setup (all, init, brew,"
-prompt1="${prompt1} macOS, pydata, aws, data, web, vnc, zsh): "
+prompt1="Please select the setup scope (all, init, brew, macOS, data, web,"
+prompt1="${prompt1} python, aws, zsh): "
 
 # If the scope of the intended setup is not specified, ask for it.
 if [ -z "$@" ]; then
@@ -103,6 +99,9 @@ if [ -z "$@" ]; then
 fi
 
 function dotSetup() {
+    # Set ASSETS directory.
+    ASSETS=~/.setup-assets
+    
     # Gain administrative access; update 'sudo' timestamp until script
     # terminates to prevent multiple prompts.
     sudo -v
@@ -131,14 +130,6 @@ function dotSetup() {
             # Set macOS and application preferences.
             . ./scripts/macOS.sh
         fi
-        if [[ $ARG == "python" ]] || [[ $ARG == "all" ]]; then
-            # Set up Python data development environment.
-            . ./scripts/python.sh
-        fi
-        if [[ $ARG == "aws" ]] || [[ $ARG == "all" ]]; then
-            # Set up AWS development environment.
-            . ./scripts/aws.sh
-        fi
         if [[ $ARG == "data" ]] || [[ $ARG == "all" ]]; then
             # Configure databases and related tools.
             . ./scripts/data.sh
@@ -147,9 +138,13 @@ function dotSetup() {
             # Configure JavaScript web development environment.
             . ./scripts/web.sh
         fi
-        if [[ $ARG == "vnc" ]] || [[ $ARG == "all" ]]; then
-            # Build TigerVNC and configure.
-            . ./scripts/vnc.sh
+        if [[ $ARG == "aws" ]] || [[ $ARG == "all" ]]; then
+            # Set up AWS development environment.
+            . ./scripts/aws.sh
+        fi
+        if [[ $ARG == "python" ]] || [[ $ARG == "all" ]]; then
+            # Set up Python development environment.
+            . ./scripts/python.sh
         fi
         if [[ $ARG == "zsh" ]] || [[ $ARG == "all" ]]; then
             # Install Oh-My-Zsh and configure.
@@ -158,13 +153,13 @@ function dotSetup() {
     done
     shopt -u nocasematch # Restore bash to default case matching.
 
-    printf "\n\ntroncali/.setup : Complete.\n"
+    printf "\n\n~/.setup : Complete.\n"
     printf "===================================================\n"
     printf "Please restart your computer.\n\n"
 }
 
 ###############################################################################
-# Run                                                                     #
+# Run                                                                         #
 ###############################################################################
 
 prompt2="This script will overwrite existing files in your home directory."

@@ -3,14 +3,14 @@
 #####################################################################
 # CREDITS & LICENSE #################################################
 #####################################################################
-# Adapted from 
+# Adapted from
 # - https://github.com/mathiasbynens/dotfiles.git (.macos, brew.sh)
 # - https://github.com/donnemartin/dev-setup.git (osxprep.sh, osx.sh)
 #
 # Distributed under the MIT license.
 #####################################################################
 
-printf "\ntroncali/.setup : macOS
+printf "\n~/.setup : macOS
 ===================================================
 Configuring macOS with sensible defaults.\n"
 
@@ -24,7 +24,7 @@ xcode-select --install
 
 # Implement system and application preferences.
 echo "    -> Configuring system and application preferences."
-./scripts/prefs.sh
+#./scripts/prefs.sh
 
 ###############################################################################
 # Set Up ~/Code                                                               #
@@ -39,7 +39,7 @@ chmod 700 "$CODEDIR"
 
 # Give the folder a git icon to match appearance of other home-level folders.
 if [ ! -f "$CODEDIR"/Icon? ]; then
-	git clone git://github.com/lgarron/folderify.git "$ASSETS"/folderify --quiet
+    git clone --depth 1 git://github.com/lgarron/folderify.git "$ASSETS"/folderify --quiet
     cd "$ASSETS"/folderify
     python -m folderify "$ASSETS"/Git-Icon-2000x2000.png "$CODEDIR" > /dev/null
     rm -rf "$ASSETS"/folderify

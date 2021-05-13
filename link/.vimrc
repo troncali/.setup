@@ -1,19 +1,10 @@
 " #############################################################################
-" # CREDITS & LICENSE #########################################################
-" #############################################################################
-" # Matt Troncali's VIM configuration for OS X, adapted from
-" # - http://TODO
-" #
-" # Distributed under the MIT license.
-" #############################################################################
-
-" #############################################################################
 " # Vundle Configuration                                                      #
 " #############################################################################
 
 set nocompatible    " Required.
 filetype off        " Required.
-
+set encoding=utf-8
 " set runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -52,7 +43,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'godlygeek/tabular'              " Align code with tabs.
     Plugin 'majutsushi/tagbar'              " Browse ctags in current file.
     Plugin 'SirVer/ultisnips'               " Code snippet enigine.
-    Plugin 'Valloric/YouCompleteMe'         " Code autocompletion engine.
+"   Plugin 'Valloric/YouCompleteMe'         " Code autocompletion engine.
     Plugin 'editorconfig/editorconfig-vim'  " Project-level style preferences.
 " }
 
@@ -60,7 +51,7 @@ Plugin 'gmarik/Vundle.vim'                  " Required.
     Plugin 'pangloss/vim-javascript'        " Syntax.
     Plugin 'jelera/vim-javascript-syntax'   " Syntax.
     Plugin 'elzr/vim-json'                  " JSON syntax and warnings.
-    Plugin 'marijnh/tern_for_vim'           " Code analysis engine.
+    Plugin 'ternjs/tern_for_vim'            " Code analysis engine.
 " }
 
 " PYTHON PLUGINS ------------------------------------------------------------- {
@@ -146,6 +137,7 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
 set modelines=0
 set window=0
+set omnifunc=syntaxcomplete#Complete
 " vim: set ft=vim :
 
 :syntax enable
