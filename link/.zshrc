@@ -1,10 +1,9 @@
+# Fix to permit group permissions for autocomplete
+ZSH_DISABLE_COMPFIX=true
+
 # Paths to oh-my-zsh installation and customization folder.
 export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.setup-assets/custom-zsh/
-
-# Revise Path to include software and manuals installed by Homebrew.
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-export MANPATH="/usr/local/man:$MANPATH"
 
 # Paths to GNU utilities.
 ### TODO: VERIFY PATHS; gls has no color when mapped as default ls.
@@ -36,6 +35,9 @@ plugins=(
 ZSH_THEME="troncali"
 source $ZSH/oh-my-zsh.sh
 
+# Remove extra space from end of right prompt.
+ZLE_RPROMPT_INDENT=0
+
 ###############################################################################
 # Aliases                                                                     #
 ###############################################################################
@@ -44,12 +46,6 @@ source $ZSH/oh-my-zsh.sh
 alias screen="printf '\e[8;54;280t' && screen"
 alias 3size="printf '\e[8;54;280t'"
 alias 1size="printf '\e[8;53;90t'"
-
-# Toggle invisible files.
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall\
-        Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall\
-        Finder /System/Library/CoreServices/Finder.app'
 
 # Use 'fuck' for thefuck.
 eval $(thefuck --alias)

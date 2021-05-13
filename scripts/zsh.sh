@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 
-###############################################################################
-# CREDITS & LICENSE ###########################################################
-###############################################################################
-# Distributed under the MIT license.
-###############################################################################
-
-###############################################################################
-# Install Oh My Zsh                                                           #
-###############################################################################
-
-zshurl="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
+zshurl="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
 # Add Zsh to the list of allowed shells and make it the active shell.
 if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then

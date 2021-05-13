@@ -9,7 +9,7 @@
 # Distributed under the MIT license.
 ###############################################################################
 
-printf "\ntroncali/.setup : Web Tools
+printf "\n~/.setup : Web Tools
 ===================================================
 Configuring JavaScript development environment.\n"
 
@@ -20,13 +20,14 @@ test_brew
 # Web Tools and Applications                                                  #
 ###############################################################################
 
-WEB_TECH=( "node                          : Node"
-           "yarn                          : Yarn"
-#          "homebrew/php/php56 --with-gmp : PHP 5.6"
-#          "heroku-toolbelt               : Heroku Toolbelt"
+WEB_TECH=( "node            : Node"
+           "yarn            : Yarn"
+#          "heroku-toolbelt : Heroku Toolbelt"
 )
 
-WEB_APPS=( "chrome-devtools               : Google DevTools" )
+WEB_APPS=( "chrome-devtools : Google DevTools"
+           "docker          : Docker"
+)
 
 echo "    -> Install useful web development tools."
 brew_it "install" WEB_TECH[@]
@@ -57,11 +58,13 @@ function npm_it() {
     done
 }
 
-NPM_PKGS=( "grunt-cli : Grunt"
-)
+#NPM_PKGS=( "grunt-cli : Grunt",
+#           "@vue/cli : Vue CLI"
+#           "nodemon : Nodemon"
+#)
 
-echo "    -> Install node packages."
-npm_it NPM_PKGS[@]
+#echo "    -> Install node packages."
+#npm_it NPM_PKGS[@]
 
 ###############################################################################
 # Clean Up                                                                    #

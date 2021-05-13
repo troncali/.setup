@@ -6,7 +6,7 @@ which, in some cases, may match the license below.
 Content in this depository developed by Matthew Troncali is distributed
 under the MIT License:
 
-Copyright 2017 Matthew Troncali <troncali.net>
+Copyright 2021 Matthew Troncali <github.com/troncali>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

@@ -9,7 +9,7 @@
 # Distributed under the MIT license.
 ###############################################################################
 
-printf "\ntroncali/.setup : init
+printf "\n~/.setup : init
 ===================================================
 Copying and linking user files.\n"
 
@@ -118,6 +118,8 @@ function do_stuff() {
         "$1_do" "$base" "$file"
     done
 }
+
+# TODO: check whether copies over entire .ssh folder; .ssh config necessary to include?
 
 # Process files in "copy" directory.
 echo "    -> Copy user files to ~/."

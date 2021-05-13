@@ -8,10 +8,13 @@
 # - https://github.com/donnemartin/dev-setup.git (brew.sh)
 # - https://github.com/jaywcjlove/awesome-mac
 #
+# Info on multi-user setup for Homebrew:
+# - https://medium.com/@leifhanack/homebrew-multi-user-setup-e10cb5849d59
+#
 # Distributed under the MIT license.
 ###############################################################################
 
-printf "\ntroncali/.setup : Homebrew
+printf "\n~/.setup : Homebrew
 ===================================================
 "
 
@@ -24,27 +27,28 @@ test_brew
 
 echo "    -> Install applications."
 
-MAC_APPS=( "1password        : 1Password"
-           "1password-cli    : "
-           "atom             : Atom"
-           "betterzip        : BetterZip" # For BetterZipQL plugin.
-           "cyberduck        : Cyberduck"
-           "dash             : Dash"
-           "dropbox          : Dropbox"
-           "dupeguru         : DupeGuru"
-           "electron         : Electron"
-           "fontforge        : FontForge"
-           "google-chrome    : Google Chrome"
-           "inkscape         : Inkscape"
-           "java             : Java"
-           "microsoft-office : Microsoft Office"
-           "openoffice       : OpenOffice"
-           "postman          : Postman"
-           "sourcetree       : Sourcetree"
-           "spark            : Spark"
-           "spotify          : Spotify"
-           "virtualbox       : VirtualBox"
-           "xquartz          : XQuartz"
+MAC_APPS=( "1password          : 1Password"
+#          "1password-cli      : "
+           "atom               : Atom"
+#          "betterzip          : BetterZip" # For BetterZipQL plugin.
+           "cyberduck          : Cyberduck"
+#          "dash               : Dash"
+#          "discord            : Discord"
+#          "dropbox            : Dropbox"
+#          "dupeguru           : DupeGuru"
+#          "electron           : Electron"
+#          "fontforge          : FontForge"
+           "google-chrome      : Google Chrome"
+#          "inkscape           : Inkscape"
+#          "java               : Java"
+           "microsoft-office   : Microsoft Office"
+#          "openoffice         : OpenOffice"
+           "postman            : Postman"
+#          "sourcetree         : Sourcetree"
+           "spotify            : Spotify"
+#          "virtualbox         : VirtualBox"
+           "visual-studio-code : Visual Studio Code"
+#          "xquartz            : XQuartz"
 )
 
 brew_it "cask install" MAC_APPS[@]
@@ -73,32 +77,32 @@ GNU_TOOLS=( "coreutils : GNU core and related utilities"
             "rsync     : "
 )
 
-MAC_TOOLS=( "zsh                           : Zsh"
-            "vim --with-override-system-vi : Vim"
-            "openssh                       : OpenSSH"
+MAC_TOOLS=( "zsh       : Zsh"
+            "openssh   : OpenSSH"
+            "vim       : Vim"
 )
 
 GIT_TOOLS=( "git        : Git and related tools"
-            "git-flow   : " # Repo ops for Vincent Driessen branching model.
-            "git-lfs    : " # Git extention for versioning large files.
-            "bfg        : " # Simpler, faster alt to git-filter-branch.
+#           "git-flow   : " # Repo ops for Vincent Driessen branching model.
+#           "git-lfs    : " # Git extention for versioning large files.
+#           "bfg        : " # Simpler, faster alt to git-filter-branch.
 #           "git-extras : "
 #           "hub        : " # Command line wrapper for git.
 )
 
-QL_PLUGS=( "qlcolorcode        : Quick Look plugins"
-           "qlstephen          : "
-           "qlmarkdown         : "
-           "quicklook-json     : "
-           "quicklook-csv      : "
-           "qlimagesize        : "
-           "suspicious-package : "
-)
+#QL_PLUGS=( "qlcolorcode        : Quick Look plugins"
+#           "qlstephen          : "
+#           "qlmarkdown         : "
+#           "quicklook-json     : "
+#           "quicklook-csv      : "
+#           "qlimagesize        : "
+#           "suspicious-package : "
+#)
 
 brew_it "install" GNU_TOOLS[@]
 brew_it "install" MAC_TOOLS[@]
 brew_it "install" GIT_TOOLS[@]
-brew_it "cask install" QL_PLUGS[@]
+#brew_it "cask install" QL_PLUGS[@]
 
 ###############################################################################
 # Install Miscellaneous Binaries                                              #
@@ -106,32 +110,32 @@ brew_it "cask install" QL_PLUGS[@]
 
 echo "    -> Install other useful CLI tools."
 
-CLI_TOOLS=( "ack                     : "
-            "imagemagick --with-webp : " # Bitmap image manipulation tool.
-            "pv                      : " # Monitor data progress through pipe.
-            "rename                  : " # Rename files according to rules.
-            "speedtest_cli           : " # Bandwith test using speedtest.net.
-            "tree                    : " # Indented recursive dir list command.
-            "dark-mode               : " # CLI for macOS 'Dark Mode'.
-            "thefuck                 : " # Corrects errors in console commands.
-#           "exiv2                   : " # Utility to manage image metadata.
-#           "lua                     : " # Lua programming language.
-#           "lynx                    : " # Web browser for Unix platforms.
-#           "p7zip                   : " # Command line version of 7-Zip.
-#           "pigz                    : " # Parallel implementation of gzip.
-#           "rhino                   : " # Java implimentation of JavaScript.
-#           "ssh-copy-id             : " # Add public key to remote machine.
-#           "testssl                 : " # TLS/SSL security testing.
-#           "vbindiff                : " # Hi diffs in hex and ASCII files.
-#           "webkit2png              : " # Webpage snapshots from terminal.
-#           "zopfli                  : " # Zopfli compression algorithm
-#           "libxml2                 : " # XML C parser and toolkit.
-#           "libxslt                 : " # XSLT C library.
-#           "libxml2 --force         : "
-#           "libxslt --force         : "
-#           "pkg-config              : " # Tool to help insert compiler options.
-#           "libffi                  : " # Foreign Function Interface Library.
-#           "pandoc                  : " # Convert one markup format to another.
+CLI_TOOLS=( "ack             : "
+#           "imagemagick     : " # Bitmap image manipulation tool.
+#           "pv              : " # Monitor data progress through pipe.
+#           "rename          : " # Rename files according to rules.
+#           "speedtest_cli   : " # Bandwith test using speedtest.net.
+            "tree            : " # Indented recursive dir list command.
+#           "dark-mode       : " # CLI for macOS 'Dark Mode'.
+            "thefuck         : " # Corrects errors in console commands.
+#           "exiv2           : " # Utility to manage image metadata.
+#           "lua             : " # Lua programming language.
+#           "lynx            : " # Web browser for Unix platforms.
+#           "p7zip           : " # Command line version of 7-Zip.
+#           "pigz            : " # Parallel implementation of gzip.
+#           "rhino           : " # Java implimentation of JavaScript.
+#           "ssh-copy-id     : " # Add public key to remote machine.
+#           "testssl         : " # TLS/SSL security testing.
+#           "vbindiff        : " # Hi diffs in hex and ASCII files.
+#           "webkit2png      : " # Webpage snapshots from terminal.
+#           "zopfli          : " # Zopfli compression algorithm
+#           "libxml2         : " # XML C parser and toolkit.
+#           "libxslt         : " # XSLT C library.
+#           "libxml2 --force : "
+#           "libxslt --force : "
+#           "pkg-config      : " # Tool to help insert compiler options.
+#           "libffi          : " # Foreign Function Interface Library.
+#           "pandoc          : " # Convert one markup format to another.
 )
 
 # Capture-the-Flag Tools: see https://github.com/ctfs/write-ups.

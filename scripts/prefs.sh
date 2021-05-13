@@ -20,7 +20,7 @@ osascript -e 'tell application "System Preferences" to quit'
 ###############################################################################
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+#sudo nvram SystemAudioVolume=" "
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -53,7 +53,7 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 #defaults write com.apple.CrashReporter DialogType -string "none"
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+#sudo systemsetup -setcomputersleep Off > /dev/null
 
 # Set the computer to sleep after 60 minutes
 #sudo systemsetup -setcomputersleep 60
@@ -87,7 +87,7 @@ sudo systemsetup -setcomputersleep Off > /dev/null
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+#sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 #sudo rm /private/var/vm/sleepimage
@@ -115,7 +115,7 @@ sudo pmset -a hibernatemode 0
 #defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+#defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
@@ -139,8 +139,11 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+#defaults write com.apple.screensaver askForPassword -int 1
+#defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Disable screen saver on login screen
+#sudo defaults write /Library/Preferences/com.apple.screensaver loginWindowIdleTime 0
 
 # Save screenshots to the desktop
 #defaults write com.apple.screencapture location -string "${HOME}/Desktop"
@@ -153,7 +156,7 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Enable subpixel font rendering on non-Apple LCDs
 # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
+#defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable HiDPI display modes (requires restart)
 #sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
@@ -263,7 +266,7 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 #sudo nvram boot-args="mbasd=1"
 
 # Show the ~/Library folder
-chflags nohidden ~/Library
+#chflags nohidden ~/Library
 
 # Show the /Volumes folder
 #sudo chflags nohidden /Volumes
@@ -320,10 +323,10 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock expose-group-by-app -bool false
 
 # Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
+#defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
+#defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -392,10 +395,10 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
 # Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
+#defaults write com.apple.Safari HomePage -string "about:blank"
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+#defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Allow hitting the Backspace key to go to the previous page in history
 #defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
@@ -407,10 +410,10 @@ defaults write com.apple.Safari ShowFavoritesBar -bool true
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 
 # Disable Safari’s thumbnail cache for History and Top Sites
-defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+#defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
 # Enable Safari’s debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+#defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
 # Make Safari’s search banners default to Contains instead of Starts With
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
@@ -433,10 +436,10 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 #defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable AutoFill
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
+#defaults write com.apple.Safari AutoFillFromAddressBook -bool false
+#defaults write com.apple.Safari AutoFillPasswords -bool false
+#defaults write com.apple.Safari AutoFillCreditCardData -bool false
+#defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 # Warn about fraudulent websites
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
@@ -556,7 +559,7 @@ sudo mdutil -E / > /dev/null
 # Only use UTF-8 in Terminal.app
 #defaults write com.apple.terminal StringEncodings -array 4
 
-## TODO: Change SMYCK file to soure from .setup-assets
+## TODO: Change SMYCK file to source from .setup-assets
 
 # Use a modified version of the SMYCK Color Scheme by default in Terminal.app
 # SMYCK Color Scheme Credit: https://github.com/hukl/Smyck-Color-Scheme
@@ -622,14 +625,14 @@ git clone --quiet https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vund
 vim +PluginInstall +qall
 
 # Build YouCompleteMe
-mkdir -p ~/.setup-assets/
-cd ~/.setup-assets/
-mkdir -p ycm_build
-cd ycm_build
-cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp > /dev/null
-cmake --build . --target ycm_core > /dev/null
-cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/tern_runtime
-npm install --production > /dev/null
+# mkdir -p ~/.setup-assets/
+# cd ~/.setup-assets/
+# mkdir -p ycm_build
+# cd ycm_build
+# cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp > /dev/null
+# cmake --build . --target ycm_core > /dev/null
+# cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/tern_runtime
+# npm install --production > /dev/null
 
 ###############################################################################
 # iTerm 2                                                                     #
@@ -661,7 +664,7 @@ npm install --production > /dev/null
 ###############################################################################
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+#defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
 #hash tmutil &> /dev/null && sudo tmutil disablelocal
@@ -766,12 +769,12 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ###############################################################################
 
 # Disable the all too sensitive backswipe on trackpads
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+#defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+#defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Disable the all too sensitive backswipe on Magic Mouse
-defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
-defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+#defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+#defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
 
 # Use the system-native print preview dialog
 defaults write com.google.Chrome DisablePrintPreview -bool true
